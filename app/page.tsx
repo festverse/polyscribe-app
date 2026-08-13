@@ -94,7 +94,7 @@ function Button({ children, dark = false, className = "" }: { children: React.Re
   return (
     <a
       href="#"
-      className={`inline-flex h-[53px] items-center justify-center rounded-lg px-8 text-base font-medium transition ${
+      className={`inline-flex h-[44px] items-center justify-center rounded-lg px-5 text-sm font-medium transition md:h-[53px] md:px-8 md:text-base ${
         dark ? "bg-ink text-white hover:bg-black" : "bg-yellow text-ink hover:bg-[#f2b900]"
       } ${className}`}
     >
@@ -109,8 +109,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white font-sans text-ink">
-      <header className="fixed inset-x-0 top-0 z-50 h-[92px] border-b border-white/60 bg-white/80 shadow-header backdrop-blur">
-        <nav className="mx-auto flex h-full max-w-[1344px] items-center justify-between px-5 lg:px-0">
+      <header className="fixed inset-x-0 top-0 z-50 h-[72px] lg:h-[92px] border-b border-white/60 bg-white/80 shadow-header backdrop-blur">
+        <nav className="mx-auto flex h-full max-w-[1344px] items-center justify-between px-4 sm:px-6 xl:px-0">
           <button className="flex h-11 w-11 flex-col items-center justify-center gap-1 rounded-lg border border-soft lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             <span className="h-0.5 w-5 bg-ink" />
             <span className="h-0.5 w-5 bg-ink" />
@@ -123,9 +123,9 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <a href="#" className="grid grid-cols-[41px_171px] items-center gap-[6px]" aria-label="Polyscribe home">
-            <img src={assets.logo} alt="" className="h-[41px] w-[41px]" />
-            <img src={assets.wordmark} alt="Polyscribe" className="h-[34px] w-[171px]" />
+          <a href="#" className="grid grid-cols-[32px_134px] items-center gap-[5px] md:grid-cols-[41px_171px] md:gap-[6px]" aria-label="Polyscribe home">
+            <img src={assets.logo} alt="" className="h-8 w-8 md:h-[41px] md:w-[41px]" />
+            <img src={assets.wordmark} alt="Polyscribe" className="h-[26px] w-[134px] md:h-[34px] md:w-[171px]" />
           </a>
           <div className="hidden h-[53px] items-center gap-4 lg:flex">
             <a className="flex h-full items-center rounded-lg border border-soft px-8 text-base font-medium" href="#">
@@ -133,7 +133,7 @@ export default function Home() {
             </a>
             <Button dark>Sign up</Button>
           </div>
-          <Button dark className="h-11 px-4 text-sm lg:hidden">
+          <Button dark className="hidden sm:inline-flex lg:hidden">
             Sign up
           </Button>
         </nav>
@@ -151,12 +151,12 @@ export default function Home() {
         )}
       </header>
 
-      <div className="mx-auto flex max-w-[1318px] flex-col items-center px-5 pt-[121px]">
-        <section className="w-full max-w-[1138px] pb-[60px] pt-11">
-          <div className="relative mx-auto min-h-[720px] overflow-hidden rounded-[20px] border border-soft bg-white px-5 py-16 sm:px-12 lg:min-h-[962px] lg:px-[121px] lg:py-[81px]">
-            <div className="grid-surface grid-fade absolute inset-x-0 top-0 h-[799px] opacity-60" />
+      <div className="mx-auto flex w-full max-w-[1318px] flex-col items-center px-4 pt-[88px] sm:px-6 lg:pt-[121px] xl:px-0">
+        <section className="w-full max-w-[1138px] pb-11 pt-7 lg:pb-[60px] lg:pt-11">
+          <div className="relative mx-auto min-h-[640px] w-full max-w-[1080px] overflow-hidden rounded-[20px] border border-soft bg-white px-5 py-12 sm:min-h-[760px] sm:px-10 sm:py-14 lg:h-[962px] lg:px-[121px] lg:py-[81px]">
+            <div className="grid-surface grid-fade absolute inset-x-0 top-0 h-[520px] opacity-60 lg:h-[799px]" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/[0.01] to-black/[0.04] shadow-[inset_0_0_100px_rgba(0,0,0,0.03)]" />
-            <div className="relative mx-auto flex max-w-[842px] flex-col items-center">
+            <div className="relative mx-auto flex w-full max-w-[842px] flex-col items-center">
               <AssetIcon src={assets.x} className="absolute left-[-26px] top-[33px] hidden h-[58px] w-[58px] rotate-[-5deg] lg:flex" />
               <AssetIcon src={assets.gmail} className="absolute left-[-52px] top-[180px] hidden h-[58px] w-[58px] rotate-[-5deg] lg:flex" />
               <AssetIcon src={assets.medium} className="absolute bottom-[124px] left-[18px] hidden h-[58px] w-[58px] rotate-[-14deg] lg:flex" />
@@ -164,23 +164,23 @@ export default function Home() {
               <AssetIcon src={assets.linkedin} className="absolute right-[-33px] top-[141px] hidden h-[58px] w-[58px] rotate-[5deg] lg:flex" />
               <AssetIcon src={assets.reddit} className="absolute bottom-[126px] right-[12px] hidden h-[58px] w-[58px] rotate-[9deg] lg:flex" />
 
-              <div className="mb-7 flex items-center gap-3 rounded-full border border-black/10 bg-black/[0.04] py-[5px] pl-[5px] pr-[17px]">
+              <div className="mb-7 flex max-w-full items-center gap-3 rounded-full border border-black/10 bg-black/[0.04] py-[5px] pl-[5px] pr-[17px]">
                 <span className="flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-sm shadow-[0_2px_2px_rgba(0,0,0,0.05)]">
                   <img src={assets.sparkle} alt="" className="h-3 w-3" />
                   New
                 </span>
                 <span className="text-sm font-medium text-muted">Discover what's possible</span>
               </div>
-              <h1 className="max-w-[824px] text-center text-[42px] font-semibold leading-[1.13] tracking-[-1px] sm:text-[56px] lg:text-[72px] lg:leading-[84px] lg:tracking-[-2px]">
+              <h1 className="max-w-[824px] text-center text-[38px] font-semibold leading-[1.12] tracking-[-0.8px] sm:text-[52px] lg:text-[72px] lg:leading-[84px] lg:tracking-[-2px]">
                 Polyscribe <span className="turn-gradient">turns</span> rough draft into your voice
               </h1>
-              <p className="mt-7 max-w-[824px] text-center text-base font-medium leading-[1.6] text-muted sm:text-lg">
+              <p className="mt-6 max-w-[824px] text-center text-[15px] font-medium leading-[1.6] text-muted sm:mt-7 sm:text-lg">
                 Polyscribe learns from writing that already sounds like you, then turns rough drafts into clear, polished content without losing your natural tone, rhythm, or personality.
               </p>
 
-              <div className="mt-11 w-full rounded-[16px] border border-white/20 bg-[#1e1e1e]/90 p-4 shadow-[0_30px_80px_rgba(0,0,0,0.12)] backdrop-blur sm:p-6">
+              <div className="mt-9 w-full rounded-[16px] border border-white/20 sm:mt-11 bg-[#1e1e1e]/90 p-4 shadow-[0_30px_80px_rgba(0,0,0,0.12)] backdrop-blur sm:p-6">
                 <div className="mb-4 text-sm font-semibold text-white">Powered by Polyscribe</div>
-                <textarea className="h-[190px] w-full resize-none rounded-[10px] border-0 bg-white p-5 text-sm text-[#777] outline-none" placeholder="Paste something you want to rewrite" />
+                <textarea className="h-[158px] w-full resize-none rounded-[10px] sm:h-[190px] border-0 bg-white p-5 text-sm text-[#777] outline-none" placeholder="Paste something you want to rewrite" />
                 <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <button className="rounded-full border border-white/20 px-4 py-2 text-left text-sm text-white">Select Preset</button>
                   <span className="text-sm text-white/50">0/1,000</span>
@@ -192,7 +192,7 @@ export default function Home() {
         </section>
 
         <Section>
-          <h2 className="max-w-[760px] text-[32px] font-semibold leading-[1.12] tracking-[-1px] sm:text-[44px] lg:text-[56px]">
+          <h2 className="max-w-[760px] text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[44px] lg:text-[56px] lg:tracking-[-1.5px]">
             Most AI rewrites your personality out. <span className="underline decoration-[#ffbd2e] decoration-wavy underline-offset-4">Polyscribe</span> keeps what makes your writing yours.
           </h2>
           <div className="mt-10 grid gap-8 lg:grid-cols-2">
@@ -204,20 +204,20 @@ export default function Home() {
         <DarkCta overline="Experience" title="Streamline Your Writing Experience" text="Experience seamless AI content humanization with our user-friendly editor. Effortlessly secure your brand's unique voice, all in one place." image={assets.streamline} />
 
         <Section id="how-it-works">
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
             <div>
-              <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] sm:text-[48px] lg:text-[56px]">How Polyscribe can write just like you</h2>
+              <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[48px] lg:text-[56px] lg:tracking-[-1.5px]">How Polyscribe can write just like you</h2>
               <p className="mt-5 max-w-[390px] text-base leading-relaxed text-muted">Paste your draft, pick a style, and get writing that sounds like you, not a machine.</p>
               <Button className="mt-8">Start writing now</Button>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {steps.map(([title, text], index) => (
-                <article key={title} className={`min-h-[190px] rounded-2xl p-6 ${index === 0 ? "bg-yellow" : "bg-soft"}`}>
+                <article key={title} className={`min-h-[172px] rounded-2xl p-5 sm:min-h-[190px] sm:p-6 ${index === 0 ? "bg-yellow" : "bg-soft"}`}>
                   <div className="flex items-center justify-between">
-                    <span className="text-xl">{["â–£", "â–¦", "â†»", "âŠž"][index]}</span>
+                    <span className="text-xl leading-none">{["â–£", "â–¦", "â†»", "âŠž"][index]}</span>
                     <span className={`text-lg font-semibold ${index === 0 ? "text-ink" : "text-[#aaa]"}`}>{String(index + 1).padStart(2, "0")}</span>
                   </div>
-                  <h3 className="mt-16 text-base font-semibold">{title}</h3>
+                  <h3 className="mt-12 text-base font-semibold sm:mt-16">{title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
                 </article>
               ))}
@@ -226,18 +226,18 @@ export default function Home() {
         </Section>
 
         <Section id="features" centered>
-          <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] sm:text-[48px] lg:text-[56px]">
+          <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[48px] lg:text-[56px] lg:tracking-[-1.5px]">
             Everything you need to
             <br />
             write like you
           </h2>
           <p className="mx-auto mt-5 max-w-[560px] text-base leading-relaxed text-muted">One tool for every format, every tone, and every platform without a trace of robotic phrasing.</p>
-          <div className="mt-10 grid gap-4 lg:grid-cols-6">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
             {features.map(([title, text, image], index) => (
-              <article key={title} className={`relative min-h-[300px] overflow-hidden rounded-2xl bg-soft p-6 text-left ${index < 2 ? "lg:col-span-3" : "lg:col-span-2"}`}>
+              <article key={title} className={`relative min-h-[276px] overflow-hidden rounded-2xl bg-soft p-5 text-left sm:min-h-[300px] sm:p-6 ${index < 2 ? "lg:col-span-3" : "lg:col-span-2"}`}>
                 <h3 className="text-base font-semibold">{title}</h3>
                 <p className="mt-2 max-w-[310px] text-sm leading-relaxed text-muted">{text}</p>
-                <img src={image} alt="" className="absolute bottom-0 left-1/2 h-[190px] max-w-none -translate-x-1/2 object-contain" />
+                <img src={image} alt="" className="absolute bottom-0 left-1/2 h-[164px] max-w-none -translate-x-1/2 object-contain sm:h-[190px]" />
               </article>
             ))}
           </div>
@@ -248,7 +248,7 @@ export default function Home() {
         <Section id="presets">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] sm:text-[48px] lg:text-[56px]">
+              <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[48px] lg:text-[56px] lg:tracking-[-1.5px]">
                 A preset for every voice
                 <br />
                 you need
@@ -257,9 +257,9 @@ export default function Home() {
             </div>
             <Button>Start writing now</Button>
           </div>
-          <div className="mt-9 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div className="mt-9 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {presets.map((preset, index) => (
-              <article key={preset} className={`min-h-[142px] rounded-xl bg-yellow p-5 shadow-[0_8px_18px_rgba(0,0,0,0.06)] ${["-rotate-1", "rotate-1", "-rotate-1", "rotate-2"][index % 4]}`}>
+              <article key={preset} className={`min-h-[132px] rounded-xl bg-yellow p-4 sm:min-h-[142px] sm:p-5 shadow-[0_8px_18px_rgba(0,0,0,0.06)] ${["-rotate-1", "rotate-1", "-rotate-1", "rotate-2"][index % 4]}`}>
                 <h3 className="text-sm font-bold">{preset}</h3>
                 <p className="mt-3 text-xs leading-relaxed text-black/70">Tailored phrasing for {preset.toLowerCase()} writing that stays clear and human.</p>
               </article>
@@ -268,16 +268,16 @@ export default function Home() {
         </Section>
 
         <Section centered>
-          <div className="rounded-[20px] bg-[#1e1e1e] px-5 py-14 sm:px-10 lg:px-16 lg:py-20">
+          <div className="rounded-[20px] bg-[#1e1e1e] px-5 py-12 sm:px-10 lg:px-16 lg:py-20">
             <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] text-white sm:text-[48px] lg:text-[56px]">
               Hear from Our Valued
               <br />
               Community Members
             </h2>
             <p className="mx-auto mt-5 max-w-[620px] text-base leading-relaxed text-white/60">Discover what our valued community members have to say about their experiences with Polyscribe.</p>
-            <div className="mt-11 grid gap-5 lg:grid-cols-3">
+            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:mt-11 lg:grid-cols-3">
               {testimonials.map(([avatar, name, handle, text, date]) => (
-                <article key={name} className="flex min-h-[290px] flex-col rounded-[14px] bg-[#272727] p-6 text-left text-white">
+                <article key={name} className="flex min-h-[250px] flex-col rounded-[14px] bg-[#272727] p-5 sm:min-h-[290px] text-left text-white sm:p-6">
                   <div className="flex items-center gap-3">
                     <img src={avatar} alt="" className="h-10 w-10 rounded-full object-cover" />
                     <div>
@@ -295,9 +295,9 @@ export default function Home() {
         </Section>
 
         <Section id="pricing" centered>
-          <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] sm:text-[48px] lg:text-[56px]">Pick the plan that fits how you write</h2>
+          <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[48px] lg:text-[56px] lg:tracking-[-1.5px]">Pick the plan that fits how you write</h2>
           <p className="mx-auto mt-5 max-w-[520px] text-base leading-relaxed text-muted">Start free, scale up when you need more. No lock-in, no surprises.</p>
-          <div className="mx-auto mt-10 grid max-w-[900px] gap-5 text-left lg:grid-cols-2">
+          <div className="mx-auto mt-10 grid max-w-[900px] gap-5 text-left md:grid-cols-2">
             <PriceCard />
             <PriceCard dark />
           </div>
@@ -305,12 +305,12 @@ export default function Home() {
 
         <Section centered>
           <div className="mx-auto max-w-[720px]">
-            <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] sm:text-[48px] lg:text-[56px]">Got questions?</h2>
-            <p className="mt-5 text-base leading-relaxed text-[#4b5563]">Everything you need to know before using EchoWriting - how it works, your data, and how it fits into your workflow.</p>
+            <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[48px] lg:text-[56px] lg:tracking-[-1.5px]">Got questions?</h2>
+            <p className="mx-auto mt-5 max-w-[620px] text-base leading-relaxed text-[#4b5563]">Everything you need to know before using EchoWriting - how it works, your data, and how it fits into your workflow.</p>
             <div className="mt-11 text-left">
               {faqs.map((faq, index) => (
                 <div key={faq} className="border-b border-[#e5e7eb] py-6">
-                  <button className="flex w-full items-center justify-between gap-6 text-left text-lg font-medium tracking-[-0.3px]" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
+                  <button className="flex w-full items-center justify-between gap-5 text-left text-base font-medium tracking-[-0.2px] sm:text-lg sm:tracking-[-0.3px]" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
                     {faq}
                     <img src={assets.chevron} alt="" className={`h-5 w-5 transition ${openFaq === index ? "rotate-180" : ""}`} />
                   </button>
@@ -321,9 +321,9 @@ export default function Home() {
           </div>
         </Section>
 
-        <footer className="w-full pb-10 pt-[60px]">
-          <div className="footer-grid overflow-hidden rounded-[40px] bg-soft">
-            <div className="grid gap-8 px-8 py-14 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:px-[120px] lg:py-20">
+        <footer className="w-full pb-8 pt-11 lg:pb-10 lg:pt-[60px]">
+          <div className="footer-grid overflow-hidden rounded-[28px] bg-soft lg:rounded-[40px]">
+            <div className="grid gap-8 px-6 py-12 sm:px-8 sm:py-14 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:px-[120px] lg:py-20">
               <div>
                 <img src={assets.logoLarge} alt="" className="h-[69px] w-[69px]" />
                 <p className="mt-3 max-w-[300px] text-2xl font-medium leading-[1.3] tracking-[-0.5px]">Polyscribe is your independent AI writing assistant.</p>
@@ -332,7 +332,7 @@ export default function Home() {
               <FooterLinks title="Legal" links={["Terms & Conditions", "Cookie Policy", "Privacy Policy"]} />
               <p className="text-[15px] text-[#878787]">&copy; 2026 Polyscribe, Inc.</p>
             </div>
-            <div className="pb-12 text-center text-[64px] font-semibold leading-[0.9] tracking-[-2px] sm:text-[130px] lg:text-[201px] lg:tracking-[-8px]">Polyscribe</div>
+            <div className="pb-10 text-center text-[58px] font-semibold leading-[0.9] tracking-[-2px] sm:text-[130px] lg:pb-12 lg:text-[201px] lg:tracking-[-8px]">Polyscribe</div>
           </div>
         </footer>
       </div>
@@ -342,7 +342,7 @@ export default function Home() {
 
 function Section({ children, id, centered = false }: { children: React.ReactNode; id?: string; centered?: boolean }) {
   return (
-    <section id={id} className={`w-full max-w-[1138px] py-[60px] ${centered ? "text-center" : ""}`}>
+    <section id={id} className={`w-full max-w-[1138px] py-11 lg:py-[60px] ${centered ? "text-center" : ""}`}>
       {children}
     </section>
   );
@@ -353,8 +353,8 @@ function CompareCard({ title, text, image }: { title: string; text: string; imag
     <article>
       <h3 className="text-base font-semibold">{title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
-      <div className="mt-4 flex min-h-[280px] items-center justify-center overflow-hidden rounded-2xl bg-soft p-5">
-        <img src={image} alt="" className="max-h-[250px] w-full object-contain" />
+      <div className="mt-4 flex min-h-[220px] items-center justify-center overflow-hidden rounded-2xl bg-soft p-5 sm:min-h-[280px]">
+        <img src={image} alt="" className="max-h-[210px] w-full object-contain sm:max-h-[250px]" />
       </div>
     </article>
   );
@@ -362,15 +362,15 @@ function CompareCard({ title, text, image }: { title: string; text: string; imag
 
 function DarkCta({ overline, title, text, image }: { overline?: string; title: string; text: string; image: string }) {
   return (
-    <section className="w-full max-w-[1138px] py-[60px]">
-      <div className="grid overflow-hidden rounded-[20px] bg-[#1e1e1e] p-8 lg:grid-cols-[1.2fr_0.8fr] lg:p-16">
+    <section className="w-full max-w-[1138px] py-11 lg:py-[60px]">
+      <div className="grid overflow-hidden rounded-[20px] bg-[#1e1e1e] p-6 sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:p-16">
         <div>
           {overline && <div className="mb-3 text-sm font-semibold text-white/80">{overline}</div>}
           <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] text-white sm:text-[48px] lg:text-[56px]">{title}</h2>
           <p className="mt-5 max-w-[590px] text-base leading-relaxed text-white/60">{text}</p>
           <Button className="mt-8">Start writing now</Button>
         </div>
-        <img src={image} alt="" className="mt-8 h-[280px] w-full object-contain lg:mt-0" />
+        <img src={image} alt="" className="mt-8 h-[220px] w-full object-contain sm:h-[280px] lg:mt-0" />
       </div>
     </section>
   );
@@ -379,7 +379,7 @@ function DarkCta({ overline, title, text, image }: { overline?: string; title: s
 function PriceCard({ dark = false }: { dark?: boolean }) {
   const items = dark ? ["Higher character limits per rewrite", "Dedicated support", "Team seats & shared billing", "Custom onboarding"] : ["Up to 3,000 characters per rewrite", "Unlimited custom presets", "Priority queue", "Cancel anytime"];
   return (
-    <article className={`rounded-[20px] p-8 lg:p-10 ${dark ? "bg-[#1e1e1e] text-white" : "bg-soft"}`}>
+    <article className={`rounded-[20px] p-6 sm:p-8 lg:p-10 ${dark ? "bg-[#1e1e1e] text-white" : "bg-soft"}`}>
       <h3 className="text-xl font-semibold">{dark ? "Custom" : "Flexible"}</h3>
       {dark && <div className="my-4 border-t border-white/15" />}
       <p className={`mt-2 text-sm leading-relaxed ${dark ? "text-white/60" : "text-muted"}`}>{dark ? "A tailored rewrite volume, character limit, and support plan for agencies, teams, or high-output writers." : "Start at $20. Scale up anytime."}</p>
