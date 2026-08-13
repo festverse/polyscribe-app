@@ -219,7 +219,7 @@ export default function Home() {
           <h2 className="max-w-[900px] text-[30px] font-semibold leading-[1.15] tracking-[-0.7px] text-[#666666] sm:text-[44px] lg:text-[52px] lg:tracking-[-1.4px]">
             Most AI rewrites your personality
             <br />
-            out. <span className="text-ink"><span className="relative inline-block"><span className="relative z-10">Polyscribe</span><span className="absolute -bottom-1 left-0 z-0 h-[6px] w-full -rotate-2 rounded-full bg-[#ffbd2e]" /></span> keeps what makes</span>
+            out. <span className="text-ink"><span className="relative inline-block"><span className="relative z-10">Polyscribe</span><svg className="absolute -bottom-2 left-0 z-0 h-[14px] w-full overflow-visible" viewBox="0 0 260 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C72 3 170 2 256 10" fill="none" stroke="#ffbd2e" strokeWidth="6" strokeLinecap="round" /></svg></span> keeps what makes</span>
             <br />
             <span className="text-ink">your writing yours.</span>
           </h2>
