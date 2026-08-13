@@ -234,7 +234,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <DarkCta overline="Experience" title="Streamline Your Writing Experience" text="Experience seamless AI content humanization with our user-friendly editor. Effortlessly secure your brand's unique voice, all in one place." image={assets.streamline} />
+        <DarkCta overline="Experience" title="Streamline Your Writing Experience" text="Experience seamless AI content humanization with our user-friendly editor. Effortlessly secure your brand's unique voice, all in one place." image={assets.streamline} featuredImage />
 
         <Section id="how-it-works">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
@@ -393,17 +393,17 @@ function CompareCard({ title, text, image }: { title: string; text: string; imag
   );
 }
 
-function DarkCta({ overline, title, text, image }: { overline?: string; title: string; text: string; image: string }) {
+function DarkCta({ overline, title, text, image, featuredImage = false }: { overline?: string; title: string; text: string; image: string; featuredImage?: boolean }) {
   return (
     <section className="w-full max-w-[1138px] py-10 lg:py-[56px]">
-      <div className="grid overflow-hidden rounded-[20px] bg-[#1e1e1e] p-6 sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:p-16">
-        <div>
+      <div className={`relative grid overflow-hidden rounded-[20px] bg-[#1e1e1e] p-6 sm:p-8 ${featuredImage ? "lg:min-h-[310px] lg:grid-cols-[1fr_1fr] lg:p-[30px]" : "lg:grid-cols-[1.2fr_0.8fr] lg:p-16"}`}>
+        <div className={featuredImage ? "relative z-10 max-w-[390px]" : ""}>
           {overline && <div className="mb-3 text-sm font-semibold text-white/80">{overline}</div>}
           <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] text-white sm:text-[48px] lg:text-[56px]">{title}</h2>
           <p className="mt-5 max-w-[590px] text-base leading-relaxed text-white/60">{text}</p>
           <Button className="mt-8">Start writing now</Button>
         </div>
-        <img src={image} alt="" className="mt-8 h-[220px] w-full object-contain sm:h-[280px] lg:mt-0" />
+        <img src={image} alt="" className={featuredImage ? "mt-8 h-[230px] w-full object-contain sm:h-[280px] lg:absolute lg:bottom-0 lg:right-0 lg:mt-0 lg:h-[318px] lg:w-[540px] lg:max-w-none lg:object-contain" : "mt-8 h-[220px] w-full object-contain sm:h-[280px] lg:mt-0"} />
       </div>
     </section>
   );
