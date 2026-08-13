@@ -115,7 +115,12 @@ export default function Home() {
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 0.8,
-      touchMultiplier: 1.0
+      touchMultiplier: 1.0,
+      anchors: {
+        offset: -92,
+        duration: 1.55,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      }
     });
 
     let frame = 0;
