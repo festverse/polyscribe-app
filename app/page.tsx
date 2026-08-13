@@ -216,8 +216,12 @@ export default function Home() {
         </section>
 
         <Section>
-          <h2 className="max-w-[760px] text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[44px] lg:text-[56px] lg:tracking-[-1.5px]">
-            Most AI rewrites your personality out. <span className="underline decoration-[#ffbd2e] decoration-wavy underline-offset-4">Polyscribe</span> keeps what makes your writing yours.
+          <h2 className="max-w-[900px] text-[30px] font-semibold leading-[1.15] tracking-[-0.7px] text-[#666666] sm:text-[44px] lg:text-[52px] lg:tracking-[-1.4px]">
+            Most AI rewrites your personality
+            <br />
+            out. <span className="text-ink"><span className="relative inline-block"><span className="relative z-10">Polyscribe</span><span className="absolute -bottom-1 left-0 z-0 h-[6px] w-full -rotate-2 rounded-full bg-[#ffbd2e]" /></span> keeps what makes</span>
+            <br />
+            <span className="text-ink">your writing yours.</span>
           </h2>
           <div className="mt-10 grid gap-8 lg:grid-cols-2">
             <CompareCard title="Generic AI" text="Polished, but no longer personal. Generic AI replaces your natural phrasing, flattens your rhythm, and leaves you editing the rewrite again." image={assets.genericAi} />
