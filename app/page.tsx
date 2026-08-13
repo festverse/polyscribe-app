@@ -55,18 +55,18 @@ const features = [
 ];
 
 const presets = [
-  ["Academic", "Formal, objective, and structured perfectly for research papers."],
-  ["Persuasive", "Compelling and convincing copy designed to drive action."],
-  ["Urgent", "High-energy, time sensitive phrasing to create FOMO."],
-  ["Enthusiastic", "Upbeat and positive tone perfect for community announcements."],
-  ["Professional", "Clean, corporate, and respectful communication for B2B."],
-  ["Playful", "Fun and quirky vibes designed to maximize social media engagement."],
-  ["Empathetic", "Warm and understanding language for customer support replies."],
-  ["Visionary", "Inspiring and forward looking text for leadership and strategy."],
-  ["Direct", "No-nonsense, clear, and concise writing for quick updates."],
-  ["Storyteller", "Engaging narrative style to captivate your audience's attention."],
-  ["Humorous", "Witty and lighthearted text to bring a smile to your readers."],
-  ["Assertive", "Strong, confident wording for taking charge of the conversation."]
+  "Academic",
+  "Persuasive",
+  "Urgent",
+  "Enthusiastic",
+  "Professional",
+  "Playful",
+  "Empathetic",
+  "Visionary",
+  "Direct",
+  "Storyteller",
+  "Humorous",
+  "Assertive"
 ];
 
 const testimonials = [
@@ -108,6 +108,26 @@ function Button({ children, dark = false, className = "" }: { children: React.Re
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.1,
+      smoothWheel: true,
+      touchMultiplier: 1.2
+    });
+
+    let frame = 0;
+    const raf = (time: number) => {
+      lenis.raf(time);
+      frame = requestAnimationFrame(raf);
+    };
+
+    frame = requestAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(frame);
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <main className="min-h-screen bg-white font-sans text-ink">
@@ -212,15 +232,15 @@ export default function Home() {
               <p className="mt-5 max-w-[390px] text-base leading-relaxed text-muted">Paste your draft, pick a style, and get writing that sounds like you, not a machine.</p>
               <Button className="mt-8">Start writing now</Button>
             </div>
-            <div className="grid max-w-[392px] grid-cols-2 gap-3 sm:gap-4 lg:justify-self-end">
+            <div className="grid gap-4 sm:grid-cols-2">
               {steps.map(([title, text], index) => (
-                <article key={title} className={`flex min-h-[170px] flex-col rounded-[5px] p-[14px] sm:min-h-[170px] sm:p-[14px] ${index === 0 ? "bg-[#ffe56c]" : "bg-[#efede8]"}`}>
+                <article key={title} className={`min-h-[172px] rounded-2xl p-5 sm:min-h-[190px] sm:p-6 ${index === 0 ? "bg-yellow" : "bg-soft"}`}>
                   <div className="flex items-center justify-between">
-                    <span className={`flex h-[30px] w-[30px] items-center justify-center rounded-full ${index === 0 ? "bg-white" : "bg-[#dedbd4]"}`}><img src={[assets.step1, assets.step2, assets.step3, assets.step4][index]} alt="" className="h-[18px] w-[18px]" /></span>
-                    <span className={`text-xs font-semibold ${index === 0 ? "text-ink" : "text-[#7f7f7f]"}`}>{String(index + 1).padStart(2, "0")}</span>
+                    <img src={[assets.step1, assets.step2, assets.step3, assets.step4][index]} alt="" className="h-6 w-6" />
+                    <span className={`text-lg font-semibold ${index === 0 ? "text-ink" : "text-[#aaa]"}`}>{String(index + 1).padStart(2, "0")}</span>
                   </div>
-                  <h3 className="mt-auto text-sm font-semibold leading-tight">{title}</h3>
-                  <p className="mt-2 text-xs leading-[1.45] text-[#77736f]">{text}</p>
+                  <h3 className="mt-12 text-base font-semibold sm:mt-16">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
                 </article>
               ))}
             </div>
@@ -259,37 +279,37 @@ export default function Home() {
             </div>
             <Button>Start writing now</Button>
           </div>
-          <div className="mt-9 grid grid-cols-2 gap-x-7 gap-y-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-9 lg:gap-y-3">
-            {presets.map(([preset, description], index) => (
-              <article key={preset} className={`min-h-[138px] bg-[#ffd738] p-[14px] shadow-[0_8px_18px_rgba(0,0,0,0.12)] ${["-rotate-2", "rotate-1", "-rotate-1", "rotate-[4deg]", "-rotate-1", "rotate-[5deg]", "-rotate-[4deg]", "rotate-[3deg]"][index % 8]}`}>
-                <h3 className="text-[13px] font-bold leading-tight">{preset}</h3>
-                <p className="mt-2 max-w-[140px] text-[11px] leading-[1.2] text-black/80">{description}</p>
+          <div className="mt-9 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+            {presets.map((preset, index) => (
+              <article key={preset} className={`min-h-[132px] rounded-xl bg-yellow p-4 sm:min-h-[142px] sm:p-5 shadow-[0_8px_18px_rgba(0,0,0,0.06)] ${["-rotate-1", "rotate-1", "-rotate-1", "rotate-2"][index % 4]}`}>
+                <h3 className="text-sm font-bold">{preset}</h3>
+                <p className="mt-3 text-xs leading-relaxed text-black/70">Tailored phrasing for {preset.toLowerCase()} writing that stays clear and human.</p>
               </article>
             ))}
           </div>
         </Section>
 
         <Section centered>
-          <div className="mx-auto max-w-[742px] overflow-hidden rounded-[12px] bg-[#1e1e1e] px-5 py-12 sm:px-20 sm:py-[68px] lg:max-w-[742px] lg:px-20 lg:py-[68px]">
-            <h2 className="text-center text-[30px] font-semibold leading-[1.18] tracking-[-0.8px] text-white sm:text-[32px] lg:text-[32px]">
+          <div className="rounded-[20px] bg-[#1e1e1e] px-5 py-12 sm:px-10 lg:px-16 lg:py-[72px]">
+            <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] text-white sm:text-[48px] lg:text-[56px]">
               Hear from Our Valued
               <br />
               Community Members
             </h2>
-            <p className="mx-auto mt-4 max-w-[470px] text-center text-[11px] leading-[1.6] text-white/60">Discover what our valued community members have to say about their experiences with Polyscribe. Read firsthand testimonials that highlight the benefits and satisfaction our platform brings to users.</p>
-            <div className="mt-12 grid grid-cols-1 justify-items-center gap-4 md:grid-cols-3 md:justify-items-start lg:mt-12">
+            <p className="mx-auto mt-5 max-w-[620px] text-base leading-relaxed text-white/60">Discover what our valued community members have to say about their experiences with Polyscribe.</p>
+            <div className="mt-10 grid gap-5 lg:mt-11 lg:grid-cols-3">
               {testimonials.map(([avatar, name, handle, text, date]) => (
-                <article key={name} className="flex h-[254px] w-full max-w-[228px] flex-col overflow-hidden rounded-[8px] border border-white/5 bg-[#242424] p-5 text-left text-white md:w-[228px]">
+                <article key={name} className="flex min-h-[290px] flex-col rounded-[14px] bg-[#272727] p-6 text-left text-white">
                   <div className="flex items-center gap-3">
-                    <img src={avatar} alt="" className="h-8 w-8 rounded-full object-cover" />
+                    <img src={avatar} alt="" className="h-10 w-10 rounded-full object-cover" />
                     <div>
-                      <strong className="text-[10px] font-medium leading-none text-white/80">{name}</strong>
-                      <div className="mt-0.5 text-[10px] text-white/45">{handle}</div>
+                      <strong className="text-sm">{name}</strong>
+                      <div className="text-xs text-white/45">{handle}</div>
                     </div>
-                    <span className="ml-auto text-xl leading-none text-white/25">Ã—</span>
+                    <span className="ml-auto text-sm font-bold">X</span>
                   </div>
-                  <p className="mt-7 text-[11px] leading-[1.45] text-white/85">{text}</p>
-                  <span className="mt-auto text-[10px] text-white/45">{date}</span>
+                  <p className="mt-6 text-sm leading-relaxed text-white/80">{text}</p>
+                  <span className="mt-auto text-xs text-white/45">{date}</span>
                 </article>
               ))}
             </div>
