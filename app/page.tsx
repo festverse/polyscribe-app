@@ -343,18 +343,18 @@ export default function Home() {
           </div>
         </Section>
 
-        <footer className="w-full pb-8 pt-11 lg:pb-10 lg:pt-[60px]">
-          <div className="footer-grid overflow-hidden rounded-[28px] bg-soft lg:rounded-[40px]">
-            <div className="grid gap-8 px-6 py-12 sm:px-8 sm:py-14 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:px-[120px] lg:py-20">
+        <footer className="w-full px-4 pb-8 pt-8 lg:pb-10 lg:pt-10">
+          <div className="footer-grid mx-auto max-w-[860px] overflow-hidden rounded-[22px] bg-soft lg:rounded-[24px]">
+            <div className="grid gap-8 px-8 pt-12 pb-5 sm:grid-cols-[1.7fr_1fr_1fr_1.2fr] sm:px-[78px] sm:pt-[52px] sm:pb-5">
               <div>
-                <img src={assets.logoLarge} alt="" className="h-[69px] w-[69px]" />
-                <p className="mt-3 max-w-[300px] text-2xl font-medium leading-[1.3] tracking-[-0.5px]">Polyscribe is your independent AI writing assistant.</p>
+                <img src={assets.logoLarge} alt="" className="h-[43px] w-[43px]" />
+                <p className="mt-3 max-w-[190px] text-[18px] font-medium leading-[1.06] tracking-[-0.45px]">Polyscribe is your independent AI writing assistant.</p>
               </div>
               <FooterLinks title="Explore" links={["Home", "Features", "Pricing"]} />
               <FooterLinks title="Legal" links={["Terms & Conditions", "Cookie Policy", "Privacy Policy"]} />
-              <p className="text-[15px] text-[#878787]">&copy; 2026 Polyscribe, Inc.</p>
+              <p className="text-[10px] text-[#878787]">&copy; 2026 Polyscribe, Inc.</p>
             </div>
-            <div className="pb-10 text-center text-[58px] font-semibold leading-[0.9] tracking-[-2px] sm:text-[130px] lg:pb-12 lg:text-[201px] lg:tracking-[-8px]">Polyscribe</div>
+            <div className="pb-4 text-center text-[58px] font-semibold leading-[0.9] tracking-[-2px] sm:text-[128px] sm:tracking-[-5px] lg:text-[128px]">Polyscribe</div>
           </div>
         </footer>
       </div>
@@ -433,10 +433,10 @@ function PriceCard({ dark = false }: { dark?: boolean }) {
 function FooterLinks({ title, links }: { title: string; links: string[] }) {
   return (
     <div>
-      <h3 className="font-medium">{title}</h3>
-      <div className="mt-4 grid gap-2.5">
+      <h3 className="text-[11px] font-medium">{title}</h3>
+      <div className="mt-3 grid gap-2">
         {links.map((link) => (
-          <a key={link} href="#" className="text-[15px] text-[#878787]">
+          <a key={link} href="#" className="text-[11px] text-[#878787]">
             {link}
           </a>
         ))}
