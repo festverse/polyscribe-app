@@ -29,7 +29,11 @@ const assets = {
   amanda: "/assets/amanda.png",
   check: "/assets/check.svg",
   checkWhite: "/assets/check-white.svg",
-  chevron: "/assets/chevron.svg"
+  chevron: "/assets/chevron.svg",
+  step1: "/assets/icon-step-1.svg",
+  step2: "/assets/icon-step-2.svg",
+  step3: "/assets/icon-step-3.svg",
+  step4: "/assets/icon-step-4.svg"
 };
 
 const navItems = ["How it Works", "Features", "Presets", "Pricing"];
@@ -67,10 +71,7 @@ const presets = [
 const testimonials = [
   [assets.amanda, "Amanda Carter", "@acarter_writes", "I was skeptical about AI writers, but Polyscribe is different. It doesn't sound robotic at all. It feels like having a professional editor on standby 24/7.", "Apr 1, 2024"],
   [assets.john, "John Anderson", "@john.anderson", "Polyscribe has completely transformed my writing experience. With their user-friendly interface and top-notch rewriting features, I feel confident managing my content.", "Apr 2, 2024"],
-  [assets.michael, "Michael Smith", "@msmith", "I've tried several writing tools in the past, but none compare to Polyscribe. The intuitive design makes it easy for me to navigate and manage my rewrites.", "Mar 24, 2024"],
-  [assets.emily, "Emily Chen", "@emilywrites", "The custom presets are the missing piece. I can move from newsletter to LinkedIn post without losing the voice my audience recognizes.", "Mar 28, 2024"],
-  [assets.sarah, "Sarah Jenkins", "@sarahcreates", "It keeps my rhythm but removes the rough edges. That is exactly what I wanted from an AI writing workflow.", "Apr 4, 2024"],
-  [assets.david, "David Lee", "@davidlee", "Our team uses it for first-pass cleanup before anything goes out. It saves time without turning everything generic.", "Apr 6, 2024"]
+  [assets.michael, "Michael Smith", "@msmith", "I've tried several writing tools in the past, but none compare to Polyscribe. The intuitive design makes it easy for me to navigate and manage my rewrites.", "Mar 24, 2024"]
 ];
 
 const faqs = [
@@ -152,7 +153,7 @@ export default function Home() {
       </header>
 
       <div className="mx-auto flex w-full max-w-[1318px] flex-col items-center px-4 pt-[88px] sm:px-6 lg:pt-[121px] xl:px-0">
-        <section className="w-full max-w-[1138px] pb-11 pt-7 lg:pb-[60px] lg:pt-11">
+        <section className="w-full max-w-[1138px] pb-[60px] pt-11">
           <div className="relative mx-auto min-h-[640px] w-full max-w-[1080px] overflow-hidden rounded-[20px] border border-soft bg-white px-5 py-12 sm:min-h-[760px] sm:px-10 sm:py-14 lg:h-[962px] lg:px-[121px] lg:py-[81px]">
             <div className="grid-surface grid-fade absolute inset-x-0 top-0 h-[520px] opacity-60 lg:h-[799px]" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/[0.01] to-black/[0.04] shadow-[inset_0_0_100px_rgba(0,0,0,0.03)]" />
@@ -214,7 +215,7 @@ export default function Home() {
               {steps.map(([title, text], index) => (
                 <article key={title} className={`min-h-[172px] rounded-2xl p-5 sm:min-h-[190px] sm:p-6 ${index === 0 ? "bg-yellow" : "bg-soft"}`}>
                   <div className="flex items-center justify-between">
-                    <span className="text-xl leading-none">{["â–£", "â–¦", "â†»", "âŠž"][index]}</span>
+                    <img src={[assets.step1, assets.step2, assets.step3, assets.step4][index]} alt="" className="h-6 w-6" />
                     <span className={`text-lg font-semibold ${index === 0 ? "text-ink" : "text-[#aaa]"}`}>{String(index + 1).padStart(2, "0")}</span>
                   </div>
                   <h3 className="mt-12 text-base font-semibold sm:mt-16">{title}</h3>
@@ -268,16 +269,16 @@ export default function Home() {
         </Section>
 
         <Section centered>
-          <div className="rounded-[20px] bg-[#1e1e1e] px-5 py-12 sm:px-10 lg:px-16 lg:py-20">
+          <div className="rounded-[20px] bg-[#1e1e1e] px-5 py-12 sm:px-10 lg:px-16 lg:py-[72px]">
             <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] text-white sm:text-[48px] lg:text-[56px]">
               Hear from Our Valued
               <br />
               Community Members
             </h2>
             <p className="mx-auto mt-5 max-w-[620px] text-base leading-relaxed text-white/60">Discover what our valued community members have to say about their experiences with Polyscribe.</p>
-            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:mt-11 lg:grid-cols-3">
+            <div className="mt-10 grid gap-5 lg:mt-11 lg:grid-cols-3">
               {testimonials.map(([avatar, name, handle, text, date]) => (
-                <article key={name} className="flex min-h-[250px] flex-col rounded-[14px] bg-[#272727] p-5 sm:min-h-[290px] text-left text-white sm:p-6">
+                <article key={name} className="flex min-h-[290px] flex-col rounded-[14px] bg-[#272727] p-6 text-left text-white">
                   <div className="flex items-center gap-3">
                     <img src={avatar} alt="" className="h-10 w-10 rounded-full object-cover" />
                     <div>
@@ -297,7 +298,7 @@ export default function Home() {
         <Section id="pricing" centered>
           <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[48px] lg:text-[56px] lg:tracking-[-1.5px]">Pick the plan that fits how you write</h2>
           <p className="mx-auto mt-5 max-w-[520px] text-base leading-relaxed text-muted">Start free, scale up when you need more. No lock-in, no surprises.</p>
-          <div className="mx-auto mt-10 grid max-w-[900px] gap-5 text-left md:grid-cols-2">
+          <div className="mx-auto mt-9 grid max-w-[900px] gap-5 text-left md:grid-cols-2 lg:mt-10">
             <PriceCard />
             <PriceCard dark />
           </div>
@@ -307,9 +308,9 @@ export default function Home() {
           <div className="mx-auto max-w-[720px]">
             <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[48px] lg:text-[56px] lg:tracking-[-1.5px]">Got questions?</h2>
             <p className="mx-auto mt-5 max-w-[620px] text-base leading-relaxed text-[#4b5563]">Everything you need to know before using EchoWriting - how it works, your data, and how it fits into your workflow.</p>
-            <div className="mt-11 text-left">
+            <div className="mt-10 text-left lg:mt-11">
               {faqs.map((faq, index) => (
-                <div key={faq} className="border-b border-[#e5e7eb] py-6">
+                <div key={faq} className="border-b border-[#e5e7eb] py-5 lg:py-6">
                   <button className="flex w-full items-center justify-between gap-5 text-left text-base font-medium tracking-[-0.2px] sm:text-lg sm:tracking-[-0.3px]" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
                     {faq}
                     <img src={assets.chevron} alt="" className={`h-5 w-5 transition ${openFaq === index ? "rotate-180" : ""}`} />
@@ -342,7 +343,7 @@ export default function Home() {
 
 function Section({ children, id, centered = false }: { children: React.ReactNode; id?: string; centered?: boolean }) {
   return (
-    <section id={id} className={`w-full max-w-[1138px] py-11 lg:py-[60px] ${centered ? "text-center" : ""}`}>
+    <section id={id} className={`w-full max-w-[1138px] py-10 lg:py-[56px] ${centered ? "text-center" : ""}`}>
       {children}
     </section>
   );
@@ -362,7 +363,7 @@ function CompareCard({ title, text, image }: { title: string; text: string; imag
 
 function DarkCta({ overline, title, text, image }: { overline?: string; title: string; text: string; image: string }) {
   return (
-    <section className="w-full max-w-[1138px] py-11 lg:py-[60px]">
+    <section className="w-full max-w-[1138px] py-10 lg:py-[56px]">
       <div className="grid overflow-hidden rounded-[20px] bg-[#1e1e1e] p-6 sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:p-16">
         <div>
           {overline && <div className="mb-3 text-sm font-semibold text-white/80">{overline}</div>}
