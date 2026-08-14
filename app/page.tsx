@@ -60,11 +60,11 @@ const steps = [
 ];
 
 const features = [
-  ["Bypass AI Detection", "Passes GPTZero, Originality.ai, and Turnitin. Every single time.", assets.feature1],
-  ["Match Your Tone", "Formal, witty, blunt, warm - pick a preset and it sticks to it.", assets.feature2],
-  ["Keep Your Facts Straight", "Polyscribe rewrites your phrasing, never your claims.", assets.feature3],
-  ["Every Format Covered", "SEO articles, LinkedIn posts, newsletters, client reports all in one tool.", assets.feature4],
-  ["Unlimited Custom Presets", "Build as many writing styles as you need, and switch in one click.", assets.feature5]
+  ["Bypass AI Detection", "Passes GPTZero, Originality.ai, and Turnitin. Every single time.", assets.feature1, "left-[-6.74%] top-[-12.18%] h-[117.77%] w-[120.18%]"],
+  ["Match Your Tone", "Formal, witty, blunt, warm - pick a preset and it sticks to it.", assets.feature2, "left-[-16.63%] top-[-0.1%] h-[100.01%] w-[130.17%]"],
+  ["Keep Your Facts Straight", "Polyscribe rewrites your phrasing, never your claims.", assets.feature3, "left-0 top-0 h-[106.46%] w-[99.81%]"],
+  ["Every Format Covered", "SEO articles, LinkedIn posts, newsletters, client reports all in one tool.", assets.feature4, "left-[-0.04%] top-0 h-[116.97%] w-[100.07%]"],
+  ["Unlimited Custom Presets", "Build as many writing styles as you need, and switch in one click.", assets.feature5, "left-0 top-[-7.38%] h-[110.24%] w-full"]
 ];
 
 const presets = [
@@ -187,7 +187,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white font-sans text-ink">
       <header className="fixed inset-x-0 top-0 z-50 h-[72px] border-b border-white/60 bg-white/80 pb-px shadow-header backdrop-blur-[8px] lg:h-[92px]">
-        <nav className="mx-auto flex h-full max-w-[1344px] items-center justify-between px-4 sm:px-6 xl:px-0">
+        <nav className="relative mx-auto flex h-full max-w-[1344px] items-center justify-between px-4 sm:px-6 xl:px-0">
           <button className="flex h-11 w-11 flex-col items-center justify-center gap-1 rounded-lg border border-soft lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             <span className="h-0.5 w-5 bg-ink" />
             <span className="h-0.5 w-5 bg-ink" />
@@ -200,7 +200,7 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <a href="#" className="grid grid-cols-[32px_134px] grid-rows-[max-content] items-start md:grid-cols-[41px_171px]" aria-label="Polyscribe home">
+          <a href="#" className="absolute left-1/2 grid -translate-x-1/2 grid-cols-[32px_134px] grid-rows-[max-content] items-start md:grid-cols-[41px_171px] lg:static lg:translate-x-0" aria-label="Polyscribe home">
             <img src={assets.logo} alt="" className="col-start-1 row-start-1 h-8 w-8 md:h-[41px] md:w-[41px]" />
             <img src={assets.wordmark} alt="Polyscribe" className="col-start-2 row-start-1 ml-[5px] mt-[5px] h-[26px] w-[134px] md:ml-[5.86px] md:mt-[6.54px] md:h-[33.454px] md:w-[171.076px]" />
           </a>
@@ -212,7 +212,7 @@ export default function Home() {
               Sign up
             </a>
           </div>
-          <a className="hidden h-[44px] items-center justify-center rounded-[8px] bg-ink px-5 text-sm font-medium text-white sm:flex lg:hidden" href="#">
+          <a className="flex h-[44px] items-center justify-center rounded-[8px] bg-ink px-4 text-sm font-medium text-white lg:hidden" href="#">
             Sign up
           </a>
         </nav>
@@ -232,9 +232,11 @@ export default function Home() {
 
       <div className="mx-auto flex w-full max-w-[1318px] flex-col items-center px-4 pt-[88px] sm:px-6 lg:pt-[121px] xl:px-0">
         <section className="w-full max-w-[1138px] pb-[60px] pt-11">
-          <div className="relative mx-auto min-h-[668px] w-full max-w-[1080px] overflow-hidden rounded-[20px] border-[5px] border-solid border-[#f3f3f3] bg-white px-5 py-12 shadow-[inset_0_0_100px_rgba(0,0,0,0.03)] sm:min-h-[846px] sm:px-10 sm:py-14 lg:h-[962px] lg:px-[121px] lg:py-[81px]">
-            <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-b from-black/[0.01] to-black/[0.04] backdrop-blur-[1px]" />
-            <div className="pointer-events-none absolute inset-0 z-30 rounded-[20px] border-[5px] border-solid border-[#f3f3f3]" />
+          <div className="relative mx-auto min-h-[668px] w-full max-w-[1080px] overflow-hidden rounded-[20px] border border-solid border-[#f3f3f3] bg-white px-5 py-12 shadow-[inset_0_0_100px_rgba(0,0,0,0.03)] sm:min-h-[846px] sm:px-10 sm:py-14 lg:h-[962px] lg:px-[121px] lg:py-[81px]">
+            <div className="pointer-events-none absolute left-[-4px] top-0 h-[calc(100%+2px)] w-[calc(100%+25px)]">
+              <div className="absolute inset-0 bg-gradient-to-b from-black/[0.01] to-black/[0.04] backdrop-blur-[1px]" />
+              <div className="absolute inset-0 rounded-[inherit] shadow-[inset_0_0_100px_rgba(0,0,0,0.03)]" />
+            </div>
             <div className="relative z-10 mx-auto flex w-full max-w-[842px] flex-col items-center">
               <AssetIcon src={assets.heroX} className="absolute left-[-42px] top-[22px] hidden h-[60px] w-[60px] rotate-[-4.6deg] rounded-[18px] lg:flex" iconClassName="h-[28px] w-[28px]" />
               <AssetIcon src={assets.heroGmail} className="absolute left-[-68px] top-[128px] hidden h-[60px] w-[60px] rotate-[-4.6deg] rounded-[18px] lg:flex" iconClassName="h-[27.5px] w-[27.5px]" />
@@ -329,13 +331,13 @@ export default function Home() {
           </div>
           <div className="flex w-full max-w-[1078px] flex-col gap-5 text-left">
             <div className="grid gap-5 lg:grid-cols-2">
-              {features.slice(0, 2).map(([title, text, image], index) => (
-                <FeatureCard key={title} title={title} text={text} image={image} large imageClassName={index === 0 ? "left-[51px] top-[118px] h-[246px] w-[428px]" : "left-[80px] top-[113px] h-[271px] w-[370px]"} />
+              {features.slice(0, 2).map(([title, text, image, imageInnerClassName], index) => (
+                <FeatureCard key={title} title={title} text={text} image={image} large imageClassName={index === 0 ? "left-1/2 top-[132px] h-[177px] w-[308px] -translate-x-1/2 lg:left-[51px] lg:top-[118px] lg:h-[246px] lg:w-[428px] lg:translate-x-0" : "left-1/2 top-[132px] h-[195px] w-[266px] -translate-x-1/2 lg:left-[80px] lg:top-[113px] lg:h-[271px] lg:w-[370px] lg:translate-x-0"} imageInnerClassName={imageInnerClassName} />
               ))}
             </div>
             <div className="grid gap-5 lg:grid-cols-3">
-              {features.slice(2).map(([title, text, image], index) => (
-                <FeatureCard key={title} title={title} text={text} image={image} imageClassName={["left-[67px] top-[122px] h-[258px] w-[220px]", "left-[64px] top-[123px] h-[257px] w-[192px]", "left-[68px] top-[123px] h-[257px] w-[189px]"][index]} />
+              {features.slice(2).map(([title, text, image, imageInnerClassName], index) => (
+                <FeatureCard key={title} title={title} text={text} image={image} imageClassName={["left-1/2 top-[132px] h-[222px] w-[190px] -translate-x-1/2 lg:left-[67px] lg:top-[122px] lg:h-[258px] lg:w-[220px] lg:translate-x-0", "left-1/2 top-[134px] h-[228px] w-[170px] -translate-x-1/2 lg:left-[64px] lg:top-[123px] lg:h-[257px] lg:w-[192px] lg:translate-x-0", "left-1/2 top-[134px] h-[232px] w-[170px] -translate-x-1/2 lg:left-[68px] lg:top-[123px] lg:h-[257px] lg:w-[189px] lg:translate-x-0"][index]} imageInnerClassName={imageInnerClassName} />
               ))}
             </div>
           </div>
@@ -496,15 +498,15 @@ function Section({ children, id, centered = false, className = "" }: { children:
   );
 }
 
-function FeatureCard({ title, text, image, large = false, imageClassName }: { title: string; text: string; image: string; large?: boolean; imageClassName: string }) {
+function FeatureCard({ title, text, image, large = false, imageClassName, imageInnerClassName }: { title: string; text: string; image: string; large?: boolean; imageClassName: string; imageInnerClassName: string }) {
   return (
     <article className={`relative overflow-hidden rounded-[16px] bg-[#f0ede8] ${large ? "h-[364px] lg:w-[530px]" : "h-[380px] lg:w-[345px]"}`}>
       <div className="absolute left-8 right-8 top-8 flex flex-col gap-2.5">
         <h3 className="text-xl font-semibold leading-7 text-ink">{title}</h3>
         <p className="text-base leading-[22px] text-[#555]">{text}</p>
       </div>
-      <div className={`pointer-events-none absolute max-sm:origin-top-left max-sm:scale-[0.72] ${imageClassName}`}>
-        <img src={image} alt="" className="h-full w-full object-contain" />
+      <div className={`pointer-events-none absolute overflow-hidden ${imageClassName}`}>
+        <img src={image} alt="" className={`absolute max-w-none ${imageInnerClassName}`} />
       </div>
     </article>
   );
