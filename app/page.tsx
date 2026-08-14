@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Lenis from "lenis";
 import { useEffect, useState } from "react";
@@ -16,12 +16,13 @@ const assets = {
   sparkle: "/assets/sparkle.svg",
   genericAi: "/assets/generic-ai.png",
   polyscribeAi: "/assets/polyscribe-ai.png",
-  streamline: "/assets/streamline-screenshot.png",
-  ready: "/assets/ready.png",
-  feature1: "/assets/feature-1.png",
-  feature2: "/assets/feature-2.png",
-  feature3: "/assets/feature-3.png",
-  feature4: "/assets/feature-4.png",
+  streamline: "/assets/banner-keyboard-background.png",
+  ready: "/assets/ready-post-banner.png",
+  feature1: "/assets/feature-bypass-ai.png",
+  feature2: "/assets/feature-match-tone.png",
+  feature3: "/assets/feature-facts.png",
+  feature4: "/assets/feature-formats.png",
+  feature5: "/assets/feature-presets.png",
   john: "/assets/john.png",
   michael: "/assets/michael.png",
   emily: "/assets/emily.png",
@@ -31,10 +32,10 @@ const assets = {
   check: "/assets/check.svg",
   checkWhite: "/assets/check-white.svg",
   chevron: "/assets/chevron.svg",
-  step1: "/assets/icon-step-1.svg",
-  step2: "/assets/icon-step-2.svg",
-  step3: "/assets/icon-step-3.svg",
-  step4: "/assets/icon-step-4.svg"
+  step1: "/assets/how-step-1.svg",
+  step2: "/assets/how-step-2.svg",
+  step3: "/assets/how-step-3.svg",
+  step4: "/assets/how-step-4.svg"
 };
 
 const navItems = ["How it Works", "Features", "Presets", "Pricing"];
@@ -51,7 +52,7 @@ const features = [
   ["Match Your Tone", "Formal, witty, blunt, warm - pick a preset and it sticks to it.", assets.feature2],
   ["Keep Your Facts Straight", "Polyscribe rewrites your phrasing, never your claims.", assets.feature3],
   ["Every Format Covered", "SEO articles, LinkedIn posts, newsletters, client reports all in one tool.", assets.feature4],
-  ["Unlimited Custom Presets", "Build as many writing styles as you need, and switch in one click.", assets.ready]
+  ["Unlimited Custom Presets", "Build as many writing styles as you need, and switch in one click.", assets.feature5]
 ];
 
 const presets = [
@@ -69,6 +70,21 @@ const presets = [
   { name: "Assertive", desc: "Strong, confident wording for taking charge of the conversation.", rotate: "rotate-[5deg]", offset: "lg:translate-y-3" }
 ];
 
+
+const presetLayouts = [
+  { left: 15, top: 7, width: 243, height: 228, rotate: -3.76 },
+  { left: 301, top: 23, width: 239, height: 225, rotate: 2.82 },
+  { left: 588, top: 3, width: 235, height: 221, rotate: -1.88 },
+  { left: 867, top: 27, width: 246, height: 232, rotate: 4.7 },
+  { left: 28, top: 244, width: 239, height: 225, rotate: -2.82 },
+  { left: 285, top: 260, width: 250, height: 235, rotate: 5.64 },
+  { left: 594, top: 226, width: 246, height: 232, rotate: -4.7 },
+  { left: 880, top: 257, width: 243, height: 228, rotate: 3.76 },
+  { left: 4, top: 478, width: 243, height: 228, rotate: -3.76 },
+  { left: 315, top: 502, width: 235, height: 221, rotate: 1.88 },
+  { left: 575, top: 465, width: 239, height: 225, rotate: -2.82 },
+  { left: 855, top: 490, width: 246, height: 232, rotate: 4.7 }
+];
 const testimonials = [
   [assets.amanda, "Amanda Carter", "@acarter_writes", "I was skeptical about AI writers, but Polyscribe is different. It doesn't sound robotic at all. It feels like having a professional editor on standby 24/7. My engagement on LinkedIn has literally doubled since I started using it.", "Apr 1, 2024"],
   [assets.john, "John Anderson", "@john.anderson", "Polyscribe has completely transformed my writing experience. With their user-friendly interface and top-notch rewriting features, I feel confident managing my content. I couldn't be happier with my decision to trust Polyscribe with my digital assets.", "Apr 1, 2024"],
@@ -182,14 +198,16 @@ export default function Home() {
 
       <div className="mx-auto flex w-full max-w-[1318px] flex-col items-center px-4 pt-[88px] sm:px-6 lg:pt-[121px] xl:px-0">
         <section className="w-full max-w-[1138px] pb-[60px] pt-11">
-          <div className="relative mx-auto min-h-[640px] w-full max-w-[1080px] overflow-hidden rounded-[22px] border-[6px] border-[#d6d6d4] px-5 py-12 shadow-[0_22px_60px_rgba(15,23,42,0.10),inset_0_1px_0_rgba(255,255,255,0.95)] sm:min-h-[840px] sm:px-10 sm:py-14 lg:h-[1040px] lg:px-[121px] lg:py-[81px]" style={{ background: "radial-gradient(circle at 50% 34%, #ffffff 0%, #ffffff 42%, #f6f6f5 64%, #ececea 80%, #dededd 100%)" }}>
-            <div className="relative mx-auto flex w-full max-w-[842px] flex-col items-center">
-              <AssetIcon src={assets.x} className="absolute left-[-26px] top-[33px] hidden h-[58px] w-[58px] rotate-[-5deg] lg:flex" />
+          <div className="relative mx-auto min-h-[668px] w-full max-w-[1080px] overflow-hidden rounded-[20px] border border-[#f3f3f3] bg-white px-5 py-12 shadow-[inset_0_0_100px_rgba(0,0,0,0.03)] sm:min-h-[846px] sm:px-10 sm:py-14 lg:h-[962px] lg:px-[121px] lg:py-[81px]">
+            <div className="hero-grid pointer-events-none absolute inset-x-0 top-0 h-[799px] opacity-100" />
+            <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-b from-black/[0.01] to-black/[0.04] backdrop-blur-[1px]" />
+            <div className="relative z-10 mx-auto flex w-full max-w-[842px] flex-col items-center">
+              <AssetIcon src={assets.x} className="absolute left-[-26px] top-[32px] hidden h-[58px] w-[58px] rotate-[-5deg] lg:flex" />
               <AssetIcon src={assets.gmail} className="absolute left-[-52px] top-[180px] hidden h-[58px] w-[58px] rotate-[-5deg] lg:flex" />
-              <AssetIcon src={assets.medium} className="absolute bottom-[124px] left-[18px] hidden h-[58px] w-[58px] rotate-[-14deg] lg:flex" />
-              <AssetIcon src={assets.youtube} className="absolute right-[58px] top-0 hidden h-[58px] w-[58px] rotate-[14deg] lg:flex" />
+              <AssetIcon src={assets.medium} className="absolute left-[18px] top-[271px] hidden h-[58px] w-[58px] rotate-[-14deg] lg:flex" />
+              <AssetIcon src={assets.youtube} className="absolute right-[58px] top-[1px] hidden h-[58px] w-[58px] rotate-[14deg] lg:flex" />
               <AssetIcon src={assets.linkedin} className="absolute right-[-33px] top-[141px] hidden h-[58px] w-[58px] rotate-[5deg] lg:flex" />
-              <AssetIcon src={assets.reddit} className="absolute bottom-[126px] right-[12px] hidden h-[58px] w-[58px] rotate-[9deg] lg:flex" />
+              <AssetIcon src={assets.reddit} className="absolute right-[12px] top-[274px] hidden h-[58px] w-[58px] rotate-[9deg] lg:flex" />
 
               <div className="mb-7 flex max-w-full items-center gap-3 rounded-full border border-black/10 bg-black/[0.04] py-[5px] pl-[5px] pr-[17px]">
                 <span className="flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-sm shadow-[0_2px_2px_rgba(0,0,0,0.05)]">
@@ -205,15 +223,15 @@ export default function Home() {
                 Polyscribe learns from writing that already sounds like you, then turns rough drafts into clear, polished content without losing your natural tone, rhythm, or personality.
               </p>
 
-              <div className="relative z-20 mt-9 w-full rounded-[18px] border border-white/15 bg-[#303030] px-5 pb-5 pt-6 shadow-[0_46px_95px_rgba(0,0,0,0.30)] sm:mt-11 sm:px-6 sm:pb-6 sm:pt-7">
-                <div className="mb-7 inline-flex items-center gap-2 text-sm font-semibold text-white/70">
+              <div className="relative z-20 mt-11 flex min-h-[420px] w-full flex-col justify-between rounded-[24px] border border-white/[0.12] bg-[rgba(30,30,30,0.9)] px-[29px] py-[25px] shadow-[0_30px_60px_rgba(0,0,0,0.30),0_0_40px_rgba(0,0,0,0.10)] backdrop-blur-[10px]">
+                <div className="inline-flex items-center gap-1.5 pb-[4px] pt-[4px] text-sm font-medium tracking-[0.3px] text-white/90">
                   <span className="text-sm leading-none text-[#F5C842]">{"\u2726"}</span>
                   <span>Powered by Polyscribe</span>
                 </div>
-                <div className="relative h-[300px] overflow-hidden rounded-[14px] bg-white shadow-[inset_0_0_0_1px_rgba(17,17,17,0.06)] sm:h-[360px] lg:h-[410px]">
-                  <textarea maxLength={3000} className="h-full w-full resize-none border-0 bg-transparent px-6 pb-24 pt-6 text-base text-[#777] outline-none placeholder:text-[#8f8f8f]" placeholder="Paste something you want to rewrite" />
-                  <div className="absolute inset-x-5 bottom-5 flex items-center gap-4">
-                    <button className="inline-flex h-11 shrink-0 items-center gap-2 rounded-lg border border-[#e4e4e4] bg-[#f7f7f7] px-4 text-sm font-medium text-[#5d6268] shadow-sm">
+                <div className="relative h-[318px] overflow-hidden rounded-[16px] bg-white px-5 py-4 shadow-[0_8px_12px_rgba(0,0,0,0.15)]">
+                  <textarea maxLength={3000} className="h-full w-full resize-none border-0 bg-transparent pb-24 text-base text-[#777] outline-none placeholder:text-[rgba(0,0,0,0.5)]" placeholder="Paste something you want to rewrite" />
+                  <div className="absolute inset-x-5 bottom-4 flex items-center gap-4 max-sm:flex-col max-sm:items-stretch">
+                    <button className="inline-flex h-[38px] shrink-0 items-center gap-1.5 rounded-[8px] border border-[#eaeaea] bg-[#f5f5f5] px-[15px] text-sm font-normal text-[#444]">
                       <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M11.8 3.4 16.6 8.2" />
                         <path d="M4 16l3.1-.7 8.4-8.4a1.7 1.7 0 0 0-2.4-2.4L4.7 12.9 4 16Z" />
@@ -221,9 +239,9 @@ export default function Home() {
                       <span>Select Preset</span>
                       <img src={assets.chevron} alt="" className="h-3 w-3 opacity-60" />
                     </button>
-                    <div className="ml-auto flex items-center gap-5">
-                      <span className="whitespace-nowrap text-sm font-medium text-[#a2a2a2]">0/3,000</span>
-                      <button className="inline-flex h-12 shrink-0 items-center rounded-full bg-[#e2e2e2] px-7 text-base font-semibold text-[#afafaf]" disabled>
+                    <div className="ml-auto flex items-center gap-4 max-sm:ml-0 max-sm:justify-between">
+                      <span className="whitespace-nowrap text-xs font-normal text-[#888]">0/3,000</span>
+                      <button className="inline-flex h-[44px] shrink-0 items-center gap-1.5 rounded-full bg-[#e5e5e5] px-5 text-base font-medium text-[#a3a3a3]" disabled>
                         Rewrite now for free {"\u2192"}
                       </button>
                     </div>
@@ -234,84 +252,90 @@ export default function Home() {
           </div>
         </section>
 
-        <Section>
-          <h2 className="max-w-[900px] text-[30px] font-semibold leading-[1.15] tracking-[-0.7px] text-[#666666] sm:text-[44px] lg:text-[52px] lg:tracking-[-1.4px]">
-            Most AI rewrites your personality
-            <br />
-            out. <span className="text-ink"><span className="relative inline-block"><span className="relative z-10">Polyscribe</span><svg className="absolute -bottom-2 left-0 z-0 h-[14px] w-full overflow-visible" viewBox="0 0 260 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C72 3 170 2 256 10" fill="none" stroke="#ffbd2e" strokeWidth="6" strokeLinecap="round" /></svg></span> keeps what makes</span>
-            <br />
-            <span className="text-ink">your writing yours.</span>
+        <section className="w-full max-w-[1138px] py-[60px]">
+          <h2 className="max-w-[848px] text-[34px] font-semibold leading-[1.18] tracking-[-0.7px] text-black/60 sm:text-[42px] lg:text-[48px] lg:leading-[70.4px] lg:tracking-[-1px]">
+            Most AI rewrites your personality out. <span className="text-ink"><span className="relative inline-block"><span className="relative z-10">Polyscribe</span><svg className="absolute -bottom-1 left-0 z-0 h-3 w-full overflow-visible lg:-bottom-0.5" viewBox="0 0 260 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C72 3 170 2 256 10" fill="none" stroke="#ffbd2e" strokeWidth="6" strokeLinecap="round" /></svg></span> keeps what makes your writing yours.</span>
           </h2>
-          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+          <div className="mt-9 grid gap-10 lg:grid-cols-[496px_496px] lg:gap-[86px]">
             <CompareCard title="Generic AI" text="Polished, but no longer personal. Generic AI replaces your natural phrasing, flattens your rhythm, and leaves you editing the rewrite again." image={assets.genericAi} />
             <CompareCard title="Polyscribe" text="Clearer, smoother, and still unmistakably you. Polyscribe learns your phrasing, protects your meaning, and keeps your personality intact." image={assets.polyscribeAi} />
           </div>
-        </Section>
-
+        </section>
         <DarkCta title="Streamline Your Writing Experience" text="Experience seamless AI content humanization with our user-friendly editor. Effortlessly bypass AI detectors and secure your brand's unique voice, all in one place." image={assets.streamline} featuredImage />
 
-        <Section id="how-it-works">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
-            <div>
-              <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[48px] lg:text-[56px] lg:tracking-[-1.5px]">How Polyscribe can write just like you</h2>
-              <p className="mt-5 max-w-[390px] text-base leading-relaxed text-muted">Paste your draft, pick a style, and get writing that sounds like you, not a machine.</p>
-              <Button className="mt-8">Start writing now</Button>
+        <section id="how-it-works" className="flex w-full max-w-[1138px] flex-col items-start gap-10 py-[60px] lg:flex-row lg:justify-between lg:gap-0">
+          <div className="flex w-full flex-col justify-between lg:h-[539px] lg:w-[467px]">
+            <div className="flex flex-col gap-3">
+              <h2 className="max-w-[467px] text-[38px] font-semibold leading-[1.08] tracking-[-0.8px] text-ink sm:text-[48px] lg:leading-[52px] lg:tracking-[-1px]">How Polyscribe can write just like you</h2>
+              <p className="max-w-[467px] text-base leading-[26px] text-[#7a7a72]">Paste your draft, pick a style, and get writing that sounds like you not a machine.</p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {steps.map(([title, text], index) => (
-                <article key={title} className={`min-h-[172px] rounded-2xl p-5 sm:min-h-[190px] sm:p-6 ${index === 0 ? "bg-yellow" : "bg-soft"}`}>
-                  <div className="flex items-center justify-between">
-                    <img src={[assets.step1, assets.step2, assets.step3, assets.step4][index]} alt="" className="h-6 w-6" />
-                    <span className={`text-lg font-semibold ${index === 0 ? "text-ink" : "text-[#aaa]"}`}>{String(index + 1).padStart(2, "0")}</span>
-                  </div>
-                  <h3 className="mt-12 text-base font-semibold sm:mt-16">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
-                </article>
+            <Button className="mt-8 h-[53px] w-fit rounded-[8px] bg-[#ffc458] px-8 py-4 text-base font-medium text-ink shadow-[0_10px_10px_rgba(253,188,69,0.2)] hover:bg-[#ffc458] lg:mt-0">Start writing now</Button>
+          </div>
+          <div className="grid w-full gap-[19.452px] sm:grid-cols-2 lg:w-[570px]">
+            {steps.map(([title, text], index) => (
+              <article key={title} className={`flex h-[260px] flex-col justify-between rounded-[8px] p-5 ${index === 0 ? "bg-[#ffe566] shadow-[3.242px_3.242px_4.863px_rgba(26,26,26,0.1)]" : "bg-[#f0ede8]"}`}>
+                <div className="flex items-center justify-between">
+                  <img src={[assets.step1, assets.step2, assets.step3, assets.step4][index]} alt="" className="h-[45px] w-[45px]" />
+                  <span className={`whitespace-nowrap text-sm font-semibold ${index === 0 ? "text-ink/60" : "text-[#7a7a72]"}`}>{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <div className={`flex flex-col ${index === 0 ? "gap-3 text-ink" : "gap-[6.484px]"}`}>
+                  <h3 className="text-lg font-semibold leading-normal text-ink">{title}</h3>
+                  <p className={`text-base leading-normal ${index === 0 ? "text-ink/85" : "text-[#7a7a72]"}`}>{text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section id="features" className="flex w-full max-w-[1138px] flex-col items-center gap-11 py-[60px] text-center">
+          <div className="flex flex-col items-center gap-4">
+            <h2 className="max-w-[642px] text-[38px] font-semibold leading-tight text-ink sm:text-[48px]">
+              Everything you need to
+              <br />
+              write like you
+            </h2>
+            <p className="max-w-[508px] whitespace-pre-wrap text-base leading-6 text-[#555]">One tool for every format, every tone, and every platform  without a trace of robotic phrasing.</p>
+          </div>
+          <div className="flex w-full max-w-[1078px] flex-col gap-5 text-left">
+            <div className="grid gap-5 lg:grid-cols-2">
+              {features.slice(0, 2).map(([title, text, image], index) => (
+                <FeatureCard key={title} title={title} text={text} image={image} large imageClassName={index === 0 ? "left-[51px] top-[118px] h-[246px] w-[428px]" : "left-[80px] top-[113px] h-[271px] w-[370px]"} />
+              ))}
+            </div>
+            <div className="grid gap-5 lg:grid-cols-3">
+              {features.slice(2).map(([title, text, image], index) => (
+                <FeatureCard key={title} title={title} text={text} image={image} imageClassName={["left-[67px] top-[122px] h-[258px] w-[220px]", "left-[64px] top-[123px] h-[257px] w-[192px]", "left-[68px] top-[123px] h-[257px] w-[189px]"][index]} />
               ))}
             </div>
           </div>
-        </Section>
+        </section>
+        <DarkCta title="Ready to post in seconds" text="Just paste a rough idea and select your preset. EchoWriting cleans it up and rewrites it for you in your style." image={assets.ready} />
 
-        <Section id="features" centered>
-          <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[48px] lg:text-[56px] lg:tracking-[-1.5px]">
-            Everything you need to
-            <br />
-            write like you
-          </h2>
-          <p className="mx-auto mt-5 max-w-[560px] text-base leading-relaxed text-muted">One tool for every format, every tone, and every platform without a trace of robotic phrasing.</p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
-            {features.map(([title, text, image], index) => (
-              <article key={title} className={`relative min-h-[276px] overflow-hidden rounded-2xl bg-soft p-5 text-left sm:min-h-[300px] sm:p-6 ${index < 2 ? "lg:col-span-3" : "lg:col-span-2"}`}>
-                <h3 className="text-base font-semibold">{title}</h3>
-                <p className="mt-2 max-w-[310px] text-sm leading-relaxed text-muted">{text}</p>
-                <img src={image} alt="" className="absolute bottom-0 left-1/2 h-[164px] max-w-none -translate-x-1/2 object-contain sm:h-[190px]" />
-              </article>
-            ))}
+        <section id="presets" className="flex w-full max-w-[1138px] flex-col items-start gap-11 py-[60px]">
+          <div className="flex flex-col items-start gap-8">
+            <div className="flex max-w-[580px] flex-col gap-3">
+              <h2 className="max-w-[580px] text-[42px] font-semibold leading-[1.22] text-ink sm:text-[48px] lg:min-h-[136px]">
+                A preset for every voice
+                <br />
+                you need
+              </h2>
+              <p className="max-w-[580px] whitespace-pre-wrap text-base leading-6 text-[#555]">Every tone has a preset waiting. Pick one off the shelf,  adjust it to fit, or build something completely your own</p>
+            </div>
+            <Button className="h-[53px] w-fit rounded-[8px] bg-[#ffc458] px-8 py-4 text-base font-medium text-ink shadow-[0_10px_10px_rgba(253,188,69,0.2)] hover:bg-[#ffc458]">Start writing now</Button>
           </div>
-        </Section>
 
-        <DarkCta title="Ready to post in seconds" text="Turn drafts, notes, and half-finished thoughts into publish-ready writing that still feels like it came from you." image={assets.ready} />
-
-        <Section id="presets">
-          <div className="max-w-[620px]">
-            <h2 className="text-[42px] font-bold leading-[1.1] tracking-[-1.1px] text-[#111111] sm:text-[54px] lg:text-[60px] lg:font-semibold lg:leading-[1.25] lg:tracking-[-1.6px]">
-              A preset for every voice
-              <br />
-              you need
-            </h2>
-            <p className="mt-5 max-w-[560px] text-[18px] font-medium leading-[1.45] tracking-[-0.2px] text-[#6B6B6B]">Every tone has a preset waiting. Pick one off the shelf, adjust it to fit, or build something completely your own</p>
-            <Button className="mt-10 h-[56px] rounded-lg px-10 text-base">Start writing now</Button>
-          </div>
-          <div className="mt-20 grid grid-cols-2 items-start gap-x-6 gap-y-5 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-[52px] lg:gap-y-5">
+          <div className="grid w-full grid-cols-2 gap-5 md:grid-cols-3 lg:hidden">
             {presets.map((preset) => (
-              <article key={preset.name} className={`h-[212px] w-full rounded-[5px] bg-[#F8CF2F] px-6 py-7 shadow-[0_14px_22px_rgba(17,17,17,0.14)] sm:h-[236px] lg:h-[214px] ${preset.rotate} ${preset.offset}`}>
-                <h3 className="text-[21px] font-bold leading-tight tracking-[-0.4px] text-[#111111]">{preset.name}</h3>
-                <p className="mt-4 max-w-[190px] text-[17px] font-medium leading-[1.22] tracking-[-0.2px] text-[#111111]">{preset.desc}</p>
-              </article>
+              <PresetCard key={preset.name} preset={preset} />
             ))}
           </div>
-        </Section>
 
+          <div className="relative hidden h-[713px] w-full lg:block">
+            {presets.map((preset, index) => {
+              const layout = presetLayouts[index];
+              return <PresetCard key={preset.name} preset={preset} style={{ left: layout.left, top: layout.top, width: layout.width, height: layout.height, transform: `rotate(${layout.rotate}deg)` }} desktop />;
+            })}
+          </div>
+        </section>
         <Section centered>
           <div className="relative overflow-hidden rounded-[24px] bg-[#171717] px-5 pb-[150px] pt-[92px] sm:px-10 lg:min-h-[760px] lg:px-16">
             <h2 className="mx-auto max-w-[760px] text-[36px] font-semibold leading-[1.16] tracking-[-1px] text-white sm:text-[52px] lg:text-[58px] lg:tracking-[-1.6px]">
@@ -391,6 +415,19 @@ export default function Home() {
   );
 }
 
+function PresetCard({ preset, desktop = false, style }: { preset: { name: string; desc: string }; desktop?: boolean; style?: React.CSSProperties }) {
+  return (
+    <article
+      className={`${desktop ? "absolute" : "min-h-[220px]"} rounded-[3.563px] bg-[#f4d03f] px-4 py-6 text-ink shadow-[0_8.908px_13.363px_-2.673px_rgba(0,0,0,0.1),0_3.563px_5.345px_-1.782px_rgba(0,0,0,0.05)]`}
+      style={style}
+    >
+      <div className="flex flex-col gap-2">
+        <h3 className="text-lg font-semibold leading-[21.95px] tracking-[-0.445px]">{preset.name}</h3>
+        <p className="max-w-[188px] text-sm leading-[20.044px]">{preset.desc}</p>
+      </div>
+    </article>
+  );
+}
 function Section({ children, id, centered = false, className = "" }: { children: React.ReactNode; id?: string; centered?: boolean; className?: string }) {
   return (
     <section id={id} className={`w-full max-w-[1138px] py-10 lg:py-[56px] ${centered ? "text-center" : ""} ${className}`}>
@@ -399,34 +436,70 @@ function Section({ children, id, centered = false, className = "" }: { children:
   );
 }
 
-function CompareCard({ title, text, image }: { title: string; text: string; image: string }) {
+function FeatureCard({ title, text, image, large = false, imageClassName }: { title: string; text: string; image: string; large?: boolean; imageClassName: string }) {
   return (
-    <article>
-      <h3 className="text-base font-semibold">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
-      <div className="mt-4 flex min-h-[220px] items-center justify-center overflow-hidden rounded-2xl bg-soft p-5 sm:min-h-[280px]">
-        <img src={image} alt="" className="max-h-[210px] w-full object-contain sm:max-h-[250px]" />
+    <article className={`relative overflow-hidden rounded-[16px] bg-[#f0ede8] ${large ? "h-[364px] lg:w-[530px]" : "h-[380px] lg:w-[345px]"}`}>
+      <div className="absolute left-8 right-8 top-8 flex flex-col gap-2.5">
+        <h3 className="text-xl font-semibold leading-7 text-ink">{title}</h3>
+        <p className="text-base leading-[22px] text-[#555]">{text}</p>
+      </div>
+      <div className={`pointer-events-none absolute ${imageClassName}`}>
+        <img src={image} alt="" className="h-full w-full object-contain" />
       </div>
     </article>
   );
 }
-
+function CompareCard({ title, text, image }: { title: string; text: string; image: string }) {
+  return (
+    <article className="w-full lg:w-[496px]">
+      <div className="flex flex-col gap-3">
+        <h3 className="text-[28px] font-medium leading-none text-ink sm:text-[32px]">{title}</h3>
+        <p className="max-w-[496px] text-base leading-normal text-[#5a5a5a]">{text}</p>
+      </div>
+      <div className="mt-6 h-[320px] w-full overflow-hidden rounded-[12px] bg-[#f0ede8] sm:h-[373px] lg:w-[496px]">
+        <img src={image} alt="" className="h-full w-full object-cover object-center" />
+      </div>
+    </article>
+  );
+}
 function DarkCta({ overline, title, text, image, featuredImage = false }: { overline?: string; title: string; text: string; image: string; featuredImage?: boolean }) {
+  const isStreamline = featuredImage && title === "Streamline Your Writing Experience";
+  const isReady = title === "Ready to post in seconds";
+
+  if (featuredImage || isReady) {
+    return (
+      <section className="w-full max-w-[1138px] py-[60px]">
+        <div className="relative min-h-[463px] overflow-hidden rounded-[24px] border border-white/[0.12] bg-[rgba(26,26,26,0.95)] backdrop-blur-[10px]">
+          <div className={`relative z-10 flex min-h-[463px] w-full flex-col justify-center px-6 py-10 sm:px-10 lg:absolute lg:top-1/2 lg:h-[289px] lg:min-h-0 lg:-translate-y-1/2 lg:p-0 ${isReady ? "lg:left-16 lg:w-[414px]" : "lg:left-16 lg:w-[450px]"}`}>
+            {overline && <div className="mb-3 text-sm font-semibold text-white/80">{overline}</div>}
+            <h2 className="max-w-[450px] text-[36px] font-semibold leading-[1.12] tracking-[-0.8px] text-white sm:text-[44px] lg:whitespace-nowrap lg:text-[48px] lg:leading-[56.32px] lg:tracking-[-1px]">
+              {isStreamline ? <>Streamline Your<br />Writing Experience</> : isReady ? <>Ready to post in<br />seconds</> : title}
+            </h2>
+            <p className={`mt-4 pb-8 text-base leading-normal text-[#e5e5e5] ${isReady ? "max-w-[414px]" : "max-w-[441px]"}`}>
+              {isReady ? <>Just paste a rough idea and select your preset.<br />EchoWriting cleans it up and rewrites it for you in your style.</> : text}
+            </p>
+            <Button className="h-[53px] w-fit rounded-[8px] bg-[#ffc458] px-8 py-4 text-base font-medium text-ink shadow-[0_10px_10px_rgba(253,188,69,0.2)] hover:bg-[#ffc458]">Start writing now</Button>
+          </div>
+          <img src={image} alt="" className={`pointer-events-none absolute bottom-0 h-auto max-w-none object-contain ${isReady ? "right-[-1px] w-[78%] sm:w-[58%] lg:left-[654px] lg:right-auto lg:top-[calc(50%+27px)] lg:w-[555px] lg:-translate-y-1/2" : "right-[-1px] w-[78%] sm:w-[62%] lg:left-[634px] lg:right-auto lg:top-[calc(50%+36px)] lg:w-[505px] lg:-translate-y-1/2"}`} />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="w-full max-w-[1138px] py-10 lg:py-[56px]">
-      <div className={`relative grid overflow-hidden rounded-[20px] p-6 sm:p-8 ${featuredImage ? "bg-[#262626] lg:min-h-[365px] lg:grid-cols-[1fr_1fr] lg:px-[64px] lg:py-[64px]" : "bg-[#1e1e1e] lg:grid-cols-[1.2fr_0.8fr] lg:p-16"}`}>
-        <div className={featuredImage ? "relative z-10 max-w-[470px]" : ""}>
+      <div className="relative grid overflow-hidden rounded-[20px] bg-[#1e1e1e] p-6 sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:p-16">
+        <div>
           {overline && <div className="mb-3 text-sm font-semibold text-white/80">{overline}</div>}
-          <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] text-white sm:text-[48px] lg:text-[56px]">{featuredImage && title === "Streamline Your Writing Experience" ? <>Streamline Your<br />Writing Experience</> : title}</h2>
+          <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] text-white sm:text-[48px] lg:text-[56px]">{title}</h2>
           <p className="mt-5 max-w-[590px] text-base leading-relaxed text-white/60">{text}</p>
           <Button className="mt-8">Start writing now</Button>
         </div>
-        <img src={image} alt="" className={featuredImage ? "mt-8 h-[250px] w-full object-contain sm:h-[300px] lg:absolute lg:bottom-[-10px] lg:right-[-67px] lg:mt-0 lg:h-[414px] lg:w-[672px] lg:max-w-none lg:object-contain lg:object-bottom" : "mt-8 h-[220px] w-full object-contain sm:h-[280px] lg:mt-0"} />
+        <img src={image} alt="" className="mt-8 h-[220px] w-full object-contain sm:h-[280px] lg:mt-0" />
       </div>
     </section>
   );
 }
-
 function PriceCard({ dark = false }: { dark?: boolean }) {
   const items = dark ? ["Higher character limits per rewrite", "Dedicated support", "Team seats & shared billing", "Custom onboarding"] : ["Up to 3,000 characters per rewrite", "Unlimited custom presets", "Priority queue", "Cancel anytime"];
 
