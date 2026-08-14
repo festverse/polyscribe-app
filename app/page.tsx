@@ -16,7 +16,7 @@ const assets = {
   sparkle: "/assets/sparkle.svg",
   genericAi: "/assets/generic-ai.png",
   polyscribeAi: "/assets/polyscribe-ai.png",
-  streamline: "/assets/streamline.png",
+  streamline: "/assets/streamline-screenshot.png",
   ready: "/assets/ready.png",
   feature1: "/assets/feature-1.png",
   feature2: "/assets/feature-2.png",
@@ -182,7 +182,7 @@ export default function Home() {
 
       <div className="mx-auto flex w-full max-w-[1318px] flex-col items-center px-4 pt-[88px] sm:px-6 lg:pt-[121px] xl:px-0">
         <section className="w-full max-w-[1138px] pb-[60px] pt-11">
-          <div className="relative mx-auto min-h-[640px] w-full max-w-[1080px] overflow-hidden rounded-[22px] border-2 border-[#c7c9cc] px-5 py-12 shadow-[0_22px_60px_rgba(15,23,42,0.10),inset_0_1px_0_rgba(255,255,255,0.95)] sm:min-h-[840px] sm:px-10 sm:py-14 lg:h-[1040px] lg:px-[121px] lg:py-[81px]" style={{ background: "radial-gradient(circle at 50% 34%, #ffffff 0%, #ffffff 42%, #f6f6f5 64%, #ececea 80%, #dededd 100%)" }}>
+          <div className="relative mx-auto min-h-[640px] w-full max-w-[1080px] overflow-hidden rounded-[22px] border-[6px] border-[#d6d6d4] px-5 py-12 shadow-[0_22px_60px_rgba(15,23,42,0.10),inset_0_1px_0_rgba(255,255,255,0.95)] sm:min-h-[840px] sm:px-10 sm:py-14 lg:h-[1040px] lg:px-[121px] lg:py-[81px]" style={{ background: "radial-gradient(circle at 50% 34%, #ffffff 0%, #ffffff 42%, #f6f6f5 64%, #ececea 80%, #dededd 100%)" }}>
             <div className="relative mx-auto flex w-full max-w-[842px] flex-col items-center">
               <AssetIcon src={assets.x} className="absolute left-[-26px] top-[33px] hidden h-[58px] w-[58px] rotate-[-5deg] lg:flex" />
               <AssetIcon src={assets.gmail} className="absolute left-[-52px] top-[180px] hidden h-[58px] w-[58px] rotate-[-5deg] lg:flex" />
@@ -414,14 +414,14 @@ function CompareCard({ title, text, image }: { title: string; text: string; imag
 function DarkCta({ overline, title, text, image, featuredImage = false }: { overline?: string; title: string; text: string; image: string; featuredImage?: boolean }) {
   return (
     <section className="w-full max-w-[1138px] py-10 lg:py-[56px]">
-      <div className={`relative grid overflow-hidden rounded-[20px] bg-[#1e1e1e] p-6 sm:p-8 ${featuredImage ? "lg:min-h-[365px] lg:grid-cols-[1fr_1fr] lg:px-[64px] lg:py-[64px]" : "lg:grid-cols-[1.2fr_0.8fr] lg:p-16"}`}>
+      <div className={`relative grid overflow-hidden rounded-[20px] p-6 sm:p-8 ${featuredImage ? "bg-[#262626] lg:min-h-[365px] lg:grid-cols-[1fr_1fr] lg:px-[64px] lg:py-[64px]" : "bg-[#1e1e1e] lg:grid-cols-[1.2fr_0.8fr] lg:p-16"}`}>
         <div className={featuredImage ? "relative z-10 max-w-[470px]" : ""}>
           {overline && <div className="mb-3 text-sm font-semibold text-white/80">{overline}</div>}
           <h2 className="text-[32px] font-semibold leading-[1.12] tracking-[-1px] text-white sm:text-[48px] lg:text-[56px]">{featuredImage && title === "Streamline Your Writing Experience" ? <>Streamline Your<br />Writing Experience</> : title}</h2>
           <p className="mt-5 max-w-[590px] text-base leading-relaxed text-white/60">{text}</p>
           <Button className="mt-8">Start writing now</Button>
         </div>
-        <img src={image} alt="" className={featuredImage ? "mt-8 h-[250px] w-full object-contain sm:h-[300px] lg:absolute lg:bottom-0 lg:right-0 lg:mt-0 lg:h-[382px] lg:w-[620px] lg:max-w-none lg:object-contain lg:object-bottom" : "mt-8 h-[220px] w-full object-contain sm:h-[280px] lg:mt-0"} />
+        <img src={image} alt="" className={featuredImage ? "mt-8 h-[250px] w-full object-contain sm:h-[300px] lg:absolute lg:bottom-[-10px] lg:right-[-67px] lg:mt-0 lg:h-[414px] lg:w-[672px] lg:max-w-none lg:object-contain lg:object-bottom" : "mt-8 h-[220px] w-full object-contain sm:h-[280px] lg:mt-0"} />
       </div>
     </section>
   );
