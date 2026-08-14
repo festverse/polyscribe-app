@@ -233,6 +233,10 @@ export default function Home() {
       <div className="mx-auto flex w-full max-w-[1318px] flex-col items-center px-4 pt-[88px] sm:px-6 lg:pt-[121px] xl:px-0">
         <section className="w-full max-w-[1138px] pb-[60px] pt-11">
           <div className="relative mx-auto min-h-[668px] w-full max-w-[1080px] overflow-hidden rounded-[20px] border border-solid border-[#f3f3f3] bg-white px-5 py-12 shadow-[inset_0_0_100px_rgba(0,0,0,0.03)] sm:min-h-[846px] sm:px-10 sm:py-14 lg:h-[962px] lg:px-[121px] lg:py-[81px]">
+            <div className="pointer-events-none absolute inset-x-0 bottom-[163px] top-0 overflow-hidden">
+              <div className="hero-grid absolute inset-y-0 left-[-1px] right-px" />
+              <div className="hero-grid absolute inset-x-0 bottom-0 top-[-2px] rotate-180" />
+            </div>
             <div className="pointer-events-none absolute left-[-4px] top-0 h-[calc(100%+2px)] w-[calc(100%+25px)]">
               <div className="absolute inset-0 bg-gradient-to-b from-black/[0.01] to-black/[0.04] backdrop-blur-[1px]" />
               <div className="absolute inset-0 rounded-[inherit] shadow-[inset_0_0_100px_rgba(0,0,0,0.03)]" />
