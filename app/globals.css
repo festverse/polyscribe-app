@@ -42,8 +42,8 @@ select {
 
 .hero-grid {
   background-image:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
   background-size: 12px 12px;
   mask-image: url("/assets/hero-grid-mask.svg");
   mask-repeat: no-repeat;
@@ -55,6 +55,17 @@ select {
     linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
     linear-gradient(180deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
+  mask-image: url("/assets/footer-grid-mask.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 100% 100%;
+}
+
+@media (min-width: 1024px) {
+  .footer-columns {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 135.19px;
+  }
 }
 
 .turn-gradient {

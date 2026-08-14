@@ -1,11 +1,11 @@
-﻿"use client";
+"use client";
 
 import Lenis from "lenis";
 import { useEffect, useState } from "react";
 
 const assets = {
-  wordmark: "/assets/wordmark.svg",
-  logo: "/assets/logo.svg",
+  wordmark: "/assets/header-wordmark.svg",
+  logo: "/assets/header-logo.svg",
   logoLarge: "/assets/logo-large.svg",
   x: "/assets/x.svg",
   gmail: "/assets/gmail.svg",
@@ -14,6 +14,17 @@ const assets = {
   linkedin: "/assets/linkedin.svg",
   reddit: "/assets/reddit.svg",
   sparkle: "/assets/sparkle.svg",
+  heroNewStar: "/assets/hero-new-star.svg",
+  heroPoweredStar: "/assets/hero-powered-star.svg",
+  heroPencil: "/assets/hero-pencil.svg",
+  heroChevron: "/assets/hero-chevron.svg",
+  heroArrowRight: "/assets/hero-arrow-right.svg",
+  heroX: "/assets/hero-x.svg",
+  heroGmail: "/assets/hero-gmail.svg",
+  heroMedium: "/assets/hero-medium.svg",
+  heroYoutube: "/assets/hero-youtube.svg",
+  heroLinkedin: "/assets/hero-linkedin.svg",
+  heroReddit: "/assets/hero-reddit.svg",
   genericAi: "/assets/generic-ai.png",
   polyscribeAi: "/assets/polyscribe-ai.png",
   streamline: "/assets/banner-keyboard-background.png",
@@ -23,12 +34,13 @@ const assets = {
   feature3: "/assets/feature-facts.png",
   feature4: "/assets/feature-formats.png",
   feature5: "/assets/feature-presets.png",
-  john: "/assets/john.png",
-  michael: "/assets/michael.png",
-  emily: "/assets/emily.png",
-  sarah: "/assets/sarah.png",
-  david: "/assets/david.png",
-  amanda: "/assets/amanda.png",
+  john: "/assets/testimonial-john.png",
+  michael: "/assets/testimonial-michael.png",
+  emily: "/assets/testimonial-emily.png",
+  sarah: "/assets/testimonial-sarah.png",
+  david: "/assets/testimonial-david.png",
+  amanda: "/assets/testimonial-amanda.png",
+  testimonialX: "/assets/testimonial-x.svg",
   check: "/assets/check.svg",
   checkWhite: "/assets/check-white.svg",
   chevron: "/assets/chevron.svg",
@@ -86,9 +98,12 @@ const presetLayouts = [
   { left: 855, top: 490, width: 246, height: 232, rotate: 4.7 }
 ];
 const testimonials = [
-  [assets.amanda, "Amanda Carter", "@acarter_writes", "I was skeptical about AI writers, but Polyscribe is different. It doesn't sound robotic at all. It feels like having a professional editor on standby 24/7. My engagement on LinkedIn has literally doubled since I started using it.", "Apr 1, 2024"],
+  [assets.amanda, "Amanda Carter", "@acarter_writes", "I was skeptical about AI writers, but Polyscribe is different. It doesn't sound robotic at all. It feels like having a professional editor on standby 24/7. My engagement on LinkedIn has literally doubled since I started using it.", "Jan 28, 2024"],
   [assets.john, "John Anderson", "@john.anderson", "Polyscribe has completely transformed my writing experience. With their user-friendly interface and top-notch rewriting features, I feel confident managing my content. I couldn't be happier with my decision to trust Polyscribe with my digital assets.", "Apr 1, 2024"],
-  [assets.michael, "Michael Smith", "@msmith", "I've tried several writing tools in the past, but none compare to Polyscribe. The platform's security measures give me peace of mind knowing that my tone is preserved. The intuitive design makes it easy for me to navigate and manage my rewrites.", "Mar 24, 2024"]
+  [assets.michael, "Michael Smith", "@msmith", "I've tried several writing platforms in the past, but none compare to Polyscribe. The platform's rewriting measures give me peace of mind knowing that my tone is safe. Plus, the intuitive design makes it easy for me to navigate and execute rewrites.", "Mar 24, 2024"],
+  [assets.emily, "Emily Chen", "@emilywrites", "Polyscribe has exceeded all my expectations. Customer support is excellent. Whenever I've had an issue or a question, the support team has been quick to respond and incredibly helpful.", "Mar 16, 2024"],
+  [assets.sarah, "Sarah Jenkins", "@sarahjenkins", "The presets make every rewrite feel controlled and consistent. I can move from casual notes to polished posts without losing my voice.", "Feb 22, 2024"],
+  [assets.david, "David Lee", "@davidlee", "It saves me time every week and keeps my writing clear. The output feels natural, not generic.", "Feb 9, 2024"]
 ];
 
 const faqs = [
@@ -100,10 +115,10 @@ const faqs = [
   "Why choose this over traditional paraphrasing tools?"
 ];
 
-function AssetIcon({ src, className = "" }: { src: string; className?: string }) {
+function AssetIcon({ src, className = "", iconClassName = "h-6 w-6" }: { src: string; className?: string; iconClassName?: string }) {
   return (
-    <span className={`flex items-center justify-center rounded-2xl border border-[#eaeaea] bg-white shadow-soft ${className}`}>
-      <img src={src} alt="" className="h-6 w-6 object-contain" />
+    <span className={`flex items-center justify-center border border-[#eaeaea] bg-white shadow-soft ${className}`}>
+      <img src={src} alt="" className={`${iconClassName} object-contain`} />
     </span>
   );
 }
@@ -154,33 +169,35 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white font-sans text-ink">
-      <header className="fixed inset-x-0 top-0 z-50 h-[72px] lg:h-[92px] border-b border-white/60 bg-white/80 shadow-header backdrop-blur">
+      <header className="fixed inset-x-0 top-0 z-50 h-[72px] border-b border-white/60 bg-white/80 pb-px shadow-header backdrop-blur-[8px] lg:h-[92px]">
         <nav className="mx-auto flex h-full max-w-[1344px] items-center justify-between px-4 sm:px-6 xl:px-0">
           <button className="flex h-11 w-11 flex-col items-center justify-center gap-1 rounded-lg border border-soft lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             <span className="h-0.5 w-5 bg-ink" />
             <span className="h-0.5 w-5 bg-ink" />
             <span className="h-0.5 w-5 bg-ink" />
           </button>
-          <div className="hidden items-center gap-5 text-base lg:flex">
+          <div className="hidden items-center gap-5 font-inter text-base font-normal text-ink lg:flex">
             {navItems.map((item) => (
-              <a key={item} href={`#${item.toLowerCase().replaceAll(" ", "-")}`} className="leading-relaxed">
+              <a key={item} href={`#${item.toLowerCase().replaceAll(" ", "-")}`} className="whitespace-nowrap pb-[0.25px] pt-[0.75px] leading-[1.6]">
                 {item}
               </a>
             ))}
           </div>
-          <a href="#" className="grid grid-cols-[32px_134px] items-center gap-[5px] md:grid-cols-[41px_171px] md:gap-[6px]" aria-label="Polyscribe home">
-            <img src={assets.logo} alt="" className="h-8 w-8 md:h-[41px] md:w-[41px]" />
-            <img src={assets.wordmark} alt="Polyscribe" className="h-[26px] w-[134px] md:h-[34px] md:w-[171px]" />
+          <a href="#" className="grid grid-cols-[32px_134px] grid-rows-[max-content] items-start md:grid-cols-[41px_171px]" aria-label="Polyscribe home">
+            <img src={assets.logo} alt="" className="col-start-1 row-start-1 h-8 w-8 md:h-[41px] md:w-[41px]" />
+            <img src={assets.wordmark} alt="Polyscribe" className="col-start-2 row-start-1 ml-[5px] mt-[5px] h-[26px] w-[134px] md:ml-[5.86px] md:mt-[6.54px] md:h-[33.454px] md:w-[171.076px]" />
           </a>
-          <div className="hidden h-[53px] items-center gap-4 lg:flex">
-            <a className="flex h-full items-center rounded-lg border border-soft px-8 text-base font-medium" href="#">
+          <div className="hidden h-[53px] items-center justify-end gap-4 lg:flex">
+            <a className="flex h-full items-center rounded-[8px] border border-[#f3f3f3] px-[33px] py-[17px] text-base font-medium leading-[21px] text-ink" href="#">
               Log in
             </a>
-            <Button dark>Sign up</Button>
+            <a className="flex h-full items-center justify-center rounded-[8px] bg-ink px-8 py-4 text-base font-medium leading-[21px] text-white" href="#">
+              Sign up
+            </a>
           </div>
-          <Button dark className="hidden sm:inline-flex lg:hidden">
+          <a className="hidden h-[44px] items-center justify-center rounded-[8px] bg-ink px-5 text-sm font-medium text-white sm:flex lg:hidden" href="#">
             Sign up
-          </Button>
+          </a>
         </nav>
         {menuOpen && (
           <div className="border-b border-soft bg-white px-5 py-4 lg:hidden">
@@ -198,20 +215,20 @@ export default function Home() {
 
       <div className="mx-auto flex w-full max-w-[1318px] flex-col items-center px-4 pt-[88px] sm:px-6 lg:pt-[121px] xl:px-0">
         <section className="w-full max-w-[1138px] pb-[60px] pt-11">
-          <div className="relative mx-auto min-h-[668px] w-full max-w-[1080px] overflow-hidden rounded-[20px] border border-[#f3f3f3] bg-white px-5 py-12 shadow-[inset_0_0_100px_rgba(0,0,0,0.03)] sm:min-h-[846px] sm:px-10 sm:py-14 lg:h-[962px] lg:px-[121px] lg:py-[81px]">
-            <div className="hero-grid pointer-events-none absolute inset-x-0 top-0 h-[799px] opacity-100" />
+          <div className="relative mx-auto min-h-[668px] w-full max-w-[1080px] overflow-hidden rounded-[20px] border-[5px] border-solid border-[#f3f3f3] bg-white px-5 py-12 shadow-[inset_0_0_100px_rgba(0,0,0,0.03)] sm:min-h-[846px] sm:px-10 sm:py-14 lg:h-[962px] lg:px-[121px] lg:py-[81px]">
             <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-b from-black/[0.01] to-black/[0.04] backdrop-blur-[1px]" />
+            <div className="pointer-events-none absolute inset-0 z-30 rounded-[20px] border-[5px] border-solid border-[#f3f3f3]" />
             <div className="relative z-10 mx-auto flex w-full max-w-[842px] flex-col items-center">
-              <AssetIcon src={assets.x} className="absolute left-[-26px] top-[32px] hidden h-[58px] w-[58px] rotate-[-5deg] lg:flex" />
-              <AssetIcon src={assets.gmail} className="absolute left-[-52px] top-[180px] hidden h-[58px] w-[58px] rotate-[-5deg] lg:flex" />
-              <AssetIcon src={assets.medium} className="absolute left-[18px] top-[271px] hidden h-[58px] w-[58px] rotate-[-14deg] lg:flex" />
-              <AssetIcon src={assets.youtube} className="absolute right-[58px] top-[1px] hidden h-[58px] w-[58px] rotate-[14deg] lg:flex" />
-              <AssetIcon src={assets.linkedin} className="absolute right-[-33px] top-[141px] hidden h-[58px] w-[58px] rotate-[5deg] lg:flex" />
-              <AssetIcon src={assets.reddit} className="absolute right-[12px] top-[274px] hidden h-[58px] w-[58px] rotate-[9deg] lg:flex" />
+              <AssetIcon src={assets.heroX} className="absolute left-[-26px] top-[38.5px] hidden h-[60px] w-[60px] rotate-[-4.6deg] rounded-[18px] lg:flex" iconClassName="h-[28px] w-[28px]" />
+              <AssetIcon src={assets.heroGmail} className="absolute left-[-52px] top-[145px] hidden h-[60px] w-[60px] rotate-[-4.6deg] rounded-[18px] lg:flex" iconClassName="h-[27.5px] w-[27.5px]" />
+              <AssetIcon src={assets.heroMedium} className="absolute left-[18px] top-[215px] hidden h-[68.8px] w-[68.8px] rotate-[-13.85deg] rounded-[16px] lg:flex" iconClassName="h-[31.5px] w-[31.5px]" />
+              <AssetIcon src={assets.heroYoutube} className="absolute right-[43px] top-[1px] hidden h-[68.8px] w-[68.8px] rotate-[13.85deg] rounded-[16px] lg:flex" iconClassName="h-[31.5px] w-[31.5px]" />
+              <AssetIcon src={assets.heroLinkedin} className="absolute right-[-38px] top-[110px] hidden h-[60px] w-[60px] rotate-[4.6deg] rounded-[18px] lg:flex" iconClassName="h-[28px] w-[28px]" />
+              <AssetIcon src={assets.heroReddit} className="absolute right-[-1px] top-[204px] hidden h-[64.6px] w-[64.6px] rotate-[9.21deg] rounded-[16px] lg:flex" iconClassName="h-[30.6px] w-[30.6px]" />
 
               <div className="mb-7 flex max-w-full items-center gap-3 rounded-full border border-black/10 bg-black/[0.04] py-[5px] pl-[5px] pr-[17px]">
                 <span className="flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-sm shadow-[0_2px_2px_rgba(0,0,0,0.05)]">
-                  <img src={assets.sparkle} alt="" className="h-3 w-3" />
+                  <img src={assets.heroNewStar} alt="" className="h-3 w-3" />
                   New
                 </span>
                 <span className="text-sm font-medium text-muted">Discover what's possible</span>
@@ -225,24 +242,22 @@ export default function Home() {
 
               <div className="relative z-20 mt-11 flex min-h-[420px] w-full flex-col justify-between rounded-[24px] border border-white/[0.12] bg-[rgba(30,30,30,0.9)] px-[29px] py-[25px] shadow-[0_30px_60px_rgba(0,0,0,0.30),0_0_40px_rgba(0,0,0,0.10)] backdrop-blur-[10px]">
                 <div className="inline-flex items-center gap-1.5 pb-[4px] pt-[4px] text-sm font-medium tracking-[0.3px] text-white/90">
-                  <span className="text-sm leading-none text-[#F5C842]">{"\u2726"}</span>
+                  <img src={assets.heroPoweredStar} alt="" className="h-[14px] w-[14px]" />
                   <span>Powered by Polyscribe</span>
                 </div>
                 <div className="relative h-[318px] overflow-hidden rounded-[16px] bg-white px-5 py-4 shadow-[0_8px_12px_rgba(0,0,0,0.15)]">
                   <textarea maxLength={3000} className="h-full w-full resize-none border-0 bg-transparent pb-24 text-base text-[#777] outline-none placeholder:text-[rgba(0,0,0,0.5)]" placeholder="Paste something you want to rewrite" />
                   <div className="absolute inset-x-5 bottom-4 flex items-center gap-4 max-sm:flex-col max-sm:items-stretch">
                     <button className="inline-flex h-[38px] shrink-0 items-center gap-1.5 rounded-[8px] border border-[#eaeaea] bg-[#f5f5f5] px-[15px] text-sm font-normal text-[#444]">
-                      <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M11.8 3.4 16.6 8.2" />
-                        <path d="M4 16l3.1-.7 8.4-8.4a1.7 1.7 0 0 0-2.4-2.4L4.7 12.9 4 16Z" />
-                      </svg>
+                      <img src={assets.heroPencil} alt="" className="h-[14px] w-[14px]" />
                       <span>Select Preset</span>
-                      <img src={assets.chevron} alt="" className="h-3 w-3 opacity-60" />
+                      <img src={assets.heroChevron} alt="" className="h-[14px] w-[14px]" />
                     </button>
                     <div className="ml-auto flex items-center gap-4 max-sm:ml-0 max-sm:justify-between">
                       <span className="whitespace-nowrap text-xs font-normal text-[#888]">0/3,000</span>
                       <button className="inline-flex h-[44px] shrink-0 items-center gap-1.5 rounded-full bg-[#e5e5e5] px-5 text-base font-medium text-[#a3a3a3]" disabled>
-                        Rewrite now for free {"\u2192"}
+                        Rewrite now for free
+                        <img src={assets.heroArrowRight} alt="" className="h-[14px] w-[14px]" />
                       </button>
                     </div>
                   </div>
@@ -336,78 +351,83 @@ export default function Home() {
             })}
           </div>
         </section>
-        <Section centered>
-          <div className="relative overflow-hidden rounded-[24px] bg-[#171717] px-5 pb-[150px] pt-[92px] sm:px-10 lg:min-h-[760px] lg:px-16">
-            <h2 className="mx-auto max-w-[760px] text-[36px] font-semibold leading-[1.16] tracking-[-1px] text-white sm:text-[52px] lg:text-[58px] lg:tracking-[-1.6px]">
-              Hear from Our Valued
-              <br />
-              Community Members
-            </h2>
-            <p className="mx-auto mt-7 max-w-[760px] text-[18px] font-medium leading-[1.5] tracking-[-0.2px] text-white/55">
-              Discover what our valued community members have to say about their experiences with Polyscribe. Read firsthand testimonials that highlight the benefits and satisfaction our platform brings to users.
-            </p>
-            <div className="relative mx-auto mt-[86px] max-w-[940px] overflow-hidden">
-              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[112px] bg-gradient-to-r from-[#171717]/90 via-[#171717]/48 to-transparent" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[112px] bg-gradient-to-l from-[#171717]/90 via-[#171717]/48 to-transparent" />
-              <div className="flex w-max gap-6 lg:-translate-x-[112px]">
-                {testimonials.slice(0, 3).map(([avatar, name, handle, text, date]) => (
-                  <article key={name} className="flex h-[372px] w-[372px] shrink-0 flex-col rounded-[16px] border border-white/8 bg-[#202020] px-8 pb-5 pt-8 text-left text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-                    <div className="flex items-center gap-4">
-                      <img src={avatar} alt="" className="h-11 w-11 rounded-full border border-white/20 object-cover" />
-                      <div>
-                        <strong className="block text-[18px] font-medium leading-tight text-white/82">{name}</strong>
-                        <div className="mt-1 text-[15px] font-medium text-white/35">{handle}</div>
-                      </div>
-                      <img src={assets.x} alt="" className="ml-auto h-5 w-5 opacity-35 invert" />
-                    </div>
-                    <p className="mt-7 max-h-[226px] overflow-hidden text-[18px] font-medium leading-[1.34] tracking-[-0.2px] text-white/82">{text}</p>
-                    <span className="mt-auto pt-4 text-[15px] font-medium text-white/40">{date}</span>
-                  </article>
-                ))}
+        <section className="w-full max-w-[1138px] py-20">
+          <div className="relative overflow-hidden rounded-[20px] bg-[#1a1a1a] px-5 py-[72px] sm:px-10 lg:px-24 lg:py-[100px]">
+            <div className="mx-auto flex min-h-[688px] w-full max-w-[1200px] flex-col items-center gap-14 lg:px-6">
+              <div className="flex w-full flex-col items-center gap-3 text-center">
+                <h2 className="max-w-[684px] text-[36px] font-semibold leading-[1.18] tracking-[-0.7px] text-white sm:text-[48px] sm:leading-[60.48px] sm:tracking-[-1px]">
+                  Hear from Our Valued Community Members
+                </h2>
+                <p className="max-w-[711px] text-base leading-[27.2px] text-[#cfcfcf]">
+                  Discover what our valued community members have to say about their experiences with Polyscribe. Read firsthand testimonials that highlight the benefits and satisfaction our platform brings to users.
+                </p>
+              </div>
+              <div className="relative h-[412px] w-full max-w-[940px] overflow-hidden">
+                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[112px] bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/75 to-transparent" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[112px] bg-gradient-to-l from-[#1a1a1a] via-[#1a1a1a]/75 to-transparent" />
+                <div className="flex w-max gap-6 py-2 lg:-translate-x-[70px]">
+                  {testimonials.slice(0, 5).map(([avatar, name, handle, text, date]) => (
+                    <TestimonialCard key={name} avatar={avatar} name={name} handle={handle} text={text} date={date} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </Section>
-
-        <Section id="pricing" centered className="max-w-[1492px]">
-          <h2 className="mx-auto max-w-[1050px] text-[38px] font-semibold leading-[1.12] tracking-[-1px] text-[#111111] sm:text-[54px] lg:text-[64px] lg:tracking-[-1.8px]">Pick the plan that fits how you write</h2>
-          <p className="mx-auto mt-6 max-w-[720px] text-[20px] font-medium leading-relaxed tracking-[-0.2px] text-[#8A8884]">Start free, scale up when you need more. No lock-in, no surprises.</p>
-          <div className="mx-auto mt-[70px] grid max-w-[1492px] gap-12 text-left md:grid-cols-2">
+        </section>
+        <section id="pricing" className="flex w-full max-w-[1138px] flex-col items-center gap-11 py-[60px] text-center">
+          <div className="flex w-full flex-col items-center gap-4">
+            <h2 className="w-full text-[38px] font-semibold leading-tight text-ink sm:text-[48px] sm:leading-[58px]">Pick the plan that fits how you write</h2>
+            <p className="max-w-[640px] text-lg leading-[26px] text-[#7a7a72]">Start free, scale up when you need more. No lock-in, no surprises.</p>
+          </div>
+          <div className="grid w-full gap-8 text-left lg:grid-cols-[550px_550px] lg:justify-between lg:gap-0">
             <PriceCard />
             <PriceCard dark />
           </div>
-        </Section>
-
-        <Section centered>
-          <div className="mx-auto max-w-[720px]">
-            <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.7px] sm:text-[48px] lg:text-[56px] lg:tracking-[-1.5px]">Got questions?</h2>
-            <p className="mx-auto mt-5 max-w-[620px] text-base leading-relaxed text-[#4b5563]">Everything you need to know before using EchoWriting - how it works, your data, and how it fits into your workflow.</p>
-            <div className="mt-10 text-left lg:mt-11">
+        </section>
+        <section className="flex w-full max-w-[1138px] flex-col items-center py-[60px]">
+          <div className="flex w-full max-w-[720px] flex-col items-start gap-11">
+            <div className="flex w-full flex-col items-center gap-[18px] text-center">
+              <h2 className="w-full text-[42px] font-semibold leading-[1.12] tracking-[-1px] text-ink sm:text-[56px] sm:leading-[62.72px] sm:tracking-[-1.5px]">Got questions?</h2>
+              <p className="max-w-[560px] text-center text-base leading-normal text-[#4b5563]">
+                Everything you need to know before using EchoWriting &mdash; how it
+                <br className="hidden sm:block" />
+                works, your data, and how it fits into your workflow.
+              </p>
+            </div>
+            <div className="flex w-full flex-col items-start">
               {faqs.map((faq, index) => (
-                <div key={faq} className="border-b border-[#e5e7eb] py-5 lg:py-6">
-                  <button className="flex w-full items-center justify-between gap-5 text-left text-base font-medium tracking-[-0.2px] sm:text-lg sm:tracking-[-0.3px]" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
-                    {faq}
-                    <img src={assets.chevron} alt="" className={`h-5 w-5 transition ${openFaq === index ? "rotate-180" : ""}`} />
+                <div key={faq} className="w-full border-b border-[#e5e7eb] pb-[25px] pt-6">
+                  <button className="flex w-full items-center justify-between gap-5 text-left text-lg font-medium leading-[20.16px] tracking-[-0.3px] text-ink" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
+                    <span>{faq}</span>
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px]">
+                      <img src={assets.chevron} alt="" className={`h-5 w-5 transition ${openFaq === index ? "rotate-180" : ""}`} />
+                    </span>
                   </button>
                   {openFaq === index && <p className="mt-4 text-sm leading-relaxed text-muted">Polyscribe is designed around rewriting existing drafts while preserving your intent, tone, and factual claims. Review important work before publishing.</p>}
                 </div>
               ))}
             </div>
           </div>
-        </Section>
-
-        <footer className="w-full pb-8 pt-11 lg:pb-10 lg:pt-[60px]">
-          <div className="overflow-hidden rounded-[28px] bg-soft lg:rounded-[40px]">
-            <div className="grid gap-8 px-6 py-12 sm:px-8 sm:py-14 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:px-[120px] lg:py-20">
-              <div>
-                <img src={assets.logoLarge} alt="" className="h-[69px] w-[69px]" />
-                <p className="mt-3 max-w-[300px] text-2xl font-medium leading-[1.3] tracking-[-0.5px]">Polyscribe is your independent AI writing assistant.</p>
+        </section>
+        <footer className="w-full pb-10 pt-[60px]">
+          <div className="relative overflow-hidden rounded-[40px] bg-soft">
+            <div className="footer-grid pointer-events-none absolute inset-0" />
+            <div className="relative mb-[-0.75px] w-full px-6 pb-16 pt-20 sm:px-10 lg:px-[120px]">
+              <div className="footer-columns grid w-full gap-8">
+                <div className="w-[300px] pb-[41.6px]">
+                  <div className="flex flex-col gap-3">
+                    <img src={assets.logoLarge} alt="" className="h-[69px] w-[69px]" />
+                    <p className="max-w-[300px] text-2xl font-medium leading-[31.2px] tracking-[-0.5px] text-ink">Polyscribe is your independent AI writing assistant.</p>
+                  </div>
+                </div>
+                <FooterLinks title="Explore" links={["Home", "Features", "Pricing"]} />
+                <FooterLinks title="Legal" links={["Terms & Conditions", "Cookie Policy", "Privacy Policy"]} />
+                <div className="flex flex-col items-start gap-[9.6px] pb-[39.99px] text-[15.2px] leading-[22.8px] text-[#878787]">
+                  <p>&copy; 2026 Polyscribe, Inc.</p>
+                </div>
               </div>
-              <FooterLinks title="Explore" links={["Home", "Features", "Pricing"]} />
-              <FooterLinks title="Legal" links={["Terms & Conditions", "Cookie Policy", "Privacy Policy"]} />
-              <p className="text-[15px] text-[#878787]">&copy; 2026 Polyscribe, Inc.</p>
             </div>
-            <div className="pb-10 text-center text-[58px] font-semibold leading-[0.9] tracking-[-2px] sm:text-[130px] lg:pb-12 lg:text-[201px] lg:tracking-[-8px]">Polyscribe</div>
+            <div className="relative w-full pb-16 text-center text-[64px] font-semibold leading-[0.9] tracking-[-2px] text-ink sm:text-[130px] lg:text-[201.6px] lg:leading-[181.44px] lg:tracking-[-8.064px]">Polyscribe</div>
           </div>
         </footer>
       </div>
@@ -415,6 +435,26 @@ export default function Home() {
   );
 }
 
+function TestimonialCard({ avatar, name, handle, text, date }: { avatar: string; name: string; handle: string; text: string; date: string }) {
+  return (
+    <article className="relative flex h-[402px] w-[350px] shrink-0 flex-col justify-between rounded-[20px] border border-white/[0.07] bg-white/[0.03] p-[33px] text-left shadow-[0_10px_15px_-3px_rgba(0,0,0,0.05)]">
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src={avatar} alt="" className="h-11 w-11 rounded-[22px] border border-[#e5e7eb] object-cover" />
+            <div>
+              <div className="text-[15px] leading-[22.5px] text-[#cfcfcf]">{name}</div>
+              <div className="text-[13px] leading-[19.5px] text-[#878787]">{handle}</div>
+            </div>
+          </div>
+          <img src={assets.testimonialX} alt="" className="h-[18px] w-[18px] opacity-50" />
+        </div>
+        <p className="text-base leading-[24.5px] text-white">{text}</p>
+      </div>
+      <div className="text-sm leading-[19.5px] text-[#878787]">{date}</div>
+    </article>
+  );
+}
 function PresetCard({ preset, desktop = false, style }: { preset: { name: string; desc: string }; desktop?: boolean; style?: React.CSSProperties }) {
   return (
     <article
@@ -505,59 +545,60 @@ function PriceCard({ dark = false }: { dark?: boolean }) {
 
   if (dark) {
     return (
-      <article className="min-h-[640px] rounded-[22px] bg-[#171717] px-10 py-12 text-white lg:px-[52px] lg:py-[50px]">
-        <h3 className="text-[28px] font-semibold leading-none tracking-[-0.5px]">Custom</h3>
-        <p className="mt-7 text-[19px] font-medium text-white/55">Built for teams and heavy writers.</p>
-        <hr className="my-5 border-white/15" />
-        <div className="mt-10 text-[52px] font-semibold leading-none tracking-[-1.2px]">Custom</div>
-        <p className="mt-12 max-w-[520px] text-[18px] font-medium leading-[1.45] tracking-[-0.2px] text-white/58">A tailored rewrite volume, character limit, and support plan for agencies, teams, or high-output writers.</p>
-        <a href="#" className="mt-8 inline-flex h-[62px] w-full items-center justify-center rounded-[8px] bg-[#F0EDE8] text-[20px] font-semibold text-[#111111]">Talk to us</a>
-        <p className="mb-6 mt-9 text-[20px] font-semibold text-white">Everything in Flexible, plus:</p>
-        <ul className="grid gap-6">
+      <article className="flex w-full flex-col gap-6 rounded-[20px] bg-[#1a1a1a] p-8 text-white sm:p-10 lg:w-[550px]">
+        <div className="flex w-full flex-col gap-2 border-b border-[#464648] pb-3">
+          <h3 className="text-2xl font-semibold leading-normal">Custom</h3>
+          <p className="text-base leading-normal text-[#aeaeb2]">Built for teams and heavy writers.</p>
+        </div>
+        <div className="text-[40px] font-semibold leading-normal">Custom</div>
+        <p className="text-sm leading-[22px] text-[#aeaeb2]">A tailored rewrite volume, character limit, and support plan for agencies, teams, or high-output writers.</p>
+        <a href="#" className="flex w-full items-center justify-center rounded-[8px] bg-[#f0ede8] px-8 py-4 text-base font-medium text-ink">Talk to us</a>
+        <div className="flex w-full flex-col gap-3.5">
+          <p className="text-base font-semibold leading-normal text-white">Everything in Flexible, plus:</p>
           {items.map((item) => (
-            <li key={item} className="flex items-center gap-5 text-[20px] font-medium text-white/82">
-              <span className="text-[20px] font-semibold text-[#2BD96B]">{"\u2713"}</span>
+            <div key={item} className="flex w-full items-start gap-3 text-base leading-normal text-white">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center"><img src={assets.checkWhite} alt="" className="h-[14px] w-[14px]" /></span>
               <span>{item}</span>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </article>
     );
   }
 
   return (
-    <article className="min-h-[608px] rounded-[22px] bg-[#EFEEEA] px-10 py-12 shadow-[0_24px_42px_rgba(17,17,17,0.06)] lg:px-[44px] lg:py-[50px]">
-      <h3 className="text-[28px] font-semibold leading-none tracking-[-0.5px] text-[#111111]">Flexible</h3>
-      <p className="mt-7 text-[19px] font-medium text-[#7C7A76]">Start at $20. Scale up anytime.</p>
-      <hr className="my-5 border-[#dfddd8]" />
-      <div className="mt-9 flex items-end text-[#111111]"><span className="text-[52px] font-semibold leading-none tracking-[-1.2px]">$20</span><span className="pb-1 text-[24px] font-medium text-[#757575]">/mo</span></div>
-      <div className="relative mt-10">
-        <label className="absolute -top-2.5 left-5 bg-[#EFEEEA] px-2 text-[13px] font-semibold text-[#77756f]">Monthly credits</label>
-        <select className="h-[58px] w-full appearance-none rounded-[12px] border-2 border-[#d7d5d0] bg-[#EFEEEA] px-5 pr-12 text-[18px] font-semibold text-[#111111] outline-none">
+    <article className="flex w-full flex-col gap-6 rounded-[20px] bg-[#f0ede8] p-8 text-ink shadow-[0_12px_12px_rgba(0,0,0,0.05)] sm:p-10 lg:w-[550px]">
+      <div className="flex w-full flex-col gap-2 border-b border-[#e5e5ea] pb-3">
+        <h3 className="text-2xl font-semibold leading-normal">Flexible</h3>
+        <p className="text-base leading-normal text-[#666]">Start at $20. Scale up anytime.</p>
+      </div>
+      <div className="text-[40px] font-semibold leading-none"><span>$20</span><span className="text-xl font-normal leading-normal text-[#666]">/mo</span></div>
+      <div className="relative flex h-[52px] w-full items-center rounded-[12px] border-[1.5px] border-[#c9c8c8] px-4">
+        <label className="absolute -top-[11.5px] left-[10.5px] bg-[#f0ede8] px-1.5 text-[11px] font-medium leading-normal text-[#666]">Monthly credits</label>
+        <select className="h-full w-full appearance-none bg-transparent pr-8 text-sm font-medium text-ink outline-none">
           <option>1,250 credits monthly</option>
         </select>
-        <img src={assets.chevron} alt="" className="pointer-events-none absolute right-5 top-1/2 h-4 w-4 -translate-y-1/2" />
+        <img src={assets.chevron} alt="" className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2" />
       </div>
-      <a href="#" className="mt-8 inline-flex h-[62px] w-full items-center justify-center rounded-[8px] bg-[#FFC14F] text-[20px] font-semibold text-[#111111] shadow-[0_20px_34px_rgba(245,197,24,0.20)]">Start writing now</a>
-      <ul className="mt-8 grid gap-6">
+      <a href="#" className="flex w-full items-center justify-center rounded-[8px] bg-[#ffc458] px-8 py-4 text-base font-medium text-ink shadow-[0_10px_10px_rgba(253,188,69,0.2)]">Start writing now</a>
+      <div className="flex w-full flex-col gap-3.5">
         {items.map((item) => (
-          <li key={item} className="flex items-center gap-6 text-[20px] font-medium text-[#343434]">
-            <span className="text-[20px] font-semibold text-[#555555]">{"\u2713"}</span>
+          <div key={item} className="flex w-full items-start gap-3 text-base leading-normal text-ink">
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center"><img src={assets.check} alt="" className="h-[14px] w-[14px]" /></span>
             <span>{item}</span>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </article>
   );
 }
-
 function FooterLinks({ title, links }: { title: string; links: string[] }) {
   return (
-    <div>
-      <h3 className="font-medium">{title}</h3>
-      <div className="mt-4 grid gap-2.5">
+    <div className="flex flex-col items-start gap-4 pb-[7.59px]">
+      <h3 className="text-base font-medium leading-6 text-ink">{title}</h3>
+      <div className="flex flex-col items-start gap-[9.6px]">
         {links.map((link) => (
-          <a key={link} href="#" className="text-[15px] text-[#878787]">
+          <a key={link} href="#" className="text-[15.2px] leading-[22.8px] text-[#878787]">
             {link}
           </a>
         ))}
