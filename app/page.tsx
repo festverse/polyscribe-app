@@ -88,14 +88,14 @@ const presetLayouts = [
   { left: 301, top: 23, width: 239, height: 225, rotate: 2.82 },
   { left: 588, top: 3, width: 235, height: 221, rotate: -1.88 },
   { left: 867, top: 27, width: 246, height: 232, rotate: 4.7 },
-  { left: 28, top: 244, width: 239, height: 225, rotate: -2.82 },
-  { left: 285, top: 260, width: 250, height: 235, rotate: 5.64 },
-  { left: 594, top: 226, width: 246, height: 232, rotate: -4.7 },
-  { left: 880, top: 257, width: 243, height: 228, rotate: 3.76 },
-  { left: 4, top: 478, width: 243, height: 228, rotate: -3.76 },
-  { left: 315, top: 502, width: 235, height: 221, rotate: 1.88 },
-  { left: 575, top: 465, width: 239, height: 225, rotate: -2.82 },
-  { left: 855, top: 490, width: 246, height: 232, rotate: 4.7 }
+  { left: 28, top: 256, width: 239, height: 225, rotate: -2.82 },
+  { left: 285, top: 272, width: 250, height: 235, rotate: 5.64 },
+  { left: 594, top: 238, width: 246, height: 232, rotate: -4.7 },
+  { left: 880, top: 269, width: 243, height: 228, rotate: 3.76 },
+  { left: 4, top: 502, width: 243, height: 228, rotate: -3.76 },
+  { left: 315, top: 526, width: 235, height: 221, rotate: 1.88 },
+  { left: 575, top: 489, width: 239, height: 225, rotate: -2.82 },
+  { left: 855, top: 514, width: 246, height: 232, rotate: 4.7 }
 ];
 const testimonials = [
   [assets.amanda, "Amanda Carter", "@acarter_writes", "I was skeptical about AI writers, but Polyscribe is different. It doesn't sound robotic at all. It feels like having a professional editor on standby 24/7. My engagement on LinkedIn has literally doubled since I started using it.", "Jan 28, 2024"],
@@ -344,7 +344,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="relative hidden h-[713px] w-full lg:block">
+          <div className="relative hidden h-[737px] w-full lg:block">
             {presets.map((preset, index) => {
               const layout = presetLayouts[index];
               return <PresetCard key={preset.name} preset={preset} style={{ left: layout.left, top: layout.top, width: layout.width, height: layout.height, transform: `rotate(${layout.rotate}deg)` }} desktop />;
@@ -410,8 +410,7 @@ export default function Home() {
           </div>
         </section>
         <footer className="w-full pb-10 pt-[60px]">
-          <div className="relative overflow-hidden rounded-[40px] bg-soft">
-            <div className="footer-grid pointer-events-none absolute inset-0" />
+          <div className="relative overflow-hidden rounded-[40px] border-[10px] border-solid border-[#f3f3f3] bg-soft">
             <div className="relative mb-[-0.75px] w-full px-6 pb-16 pt-20 sm:px-10 lg:px-[120px]">
               <div className="footer-columns grid w-full gap-8">
                 <div className="w-[300px] pb-[41.6px]">
