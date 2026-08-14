@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-poppins), Inter, Arial, sans-serif;
+  --font-inter: var(--font-inter), Arial, sans-serif;
+  --color-ink: #1a1a1a;
+  --color-muted: #505050;
+  --color-soft: #f3f3f3;
+  --color-yellow: #ffc726;
+  --shadow-soft: 0 12px 16px rgba(0, 0, 0, 0.06);
+  --shadow-header: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.grid-surface {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.grid-fade {
+  mask-image: radial-gradient(circle at center, black 0%, black 46%, transparent 78%);
+}
+
+.footer-grid {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.turn-gradient {
+  background: linear-gradient(123deg, #0d0d0d 38%, #ffffff 50%, #0d0d0d 62%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
