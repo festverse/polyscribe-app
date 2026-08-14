@@ -426,7 +426,14 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="relative w-full pb-16 text-center text-[64px] font-semibold leading-[0.9] tracking-[-2px] text-ink sm:text-[130px] lg:text-[201.6px] lg:leading-[181.44px] lg:tracking-[-8.064px]">Polyscribe</div>
+            <div className="relative w-full pb-16 text-center text-[64px] font-semibold leading-[0.9] tracking-[-2px] text-ink sm:text-[130px] lg:text-[201.6px] lg:leading-[181.44px] lg:tracking-[-8.064px]">
+              <span className="relative inline-block">
+                Polyscribe
+                <svg className="pointer-events-none absolute left-[1%] top-[70%] h-[16px] w-[98%] rotate-[-2.5deg] overflow-visible sm:h-[22px] lg:h-[30px]" viewBox="0 0 1000 42" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M18 29 C250 8 710 6 982 18" fill="none" stroke="#ffbd2e" strokeWidth="20" strokeLinecap="round" />
+                </svg>
+              </span>
+            </div>
           </div>
         </footer>
       </div>
