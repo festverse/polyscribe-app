@@ -542,7 +542,7 @@ function DarkCta({ overline, title, text, image, featuredImage = false }: { over
             </p>
             <Button className="h-[53px] w-fit rounded-[8px] bg-[#ffc458] px-8 py-4 text-base font-medium text-ink shadow-[0_10px_10px_rgba(253,188,69,0.2)] hover:bg-[#ffc458]">Start writing now</Button>
           </div>
-          <img src={image} alt="" className={`pointer-events-none relative bottom-auto right-auto mx-auto mt-8 h-auto max-w-none object-contain lg:absolute lg:mx-0 lg:mt-0 ${isReady ? "w-[92%] sm:w-[66%] lg:left-[654px] lg:right-auto lg:top-[calc(50%+27px)] lg:w-[555px] lg:-translate-y-1/2" : "w-[92%] sm:w-[70%] lg:left-[634px] lg:right-auto lg:top-[calc(50%+36px)] lg:w-[505px] lg:-translate-y-1/2"}`} />
+          <img src={image} alt="" className={`pointer-events-none relative bottom-auto right-auto mx-auto mt-8 h-auto max-w-none object-contain lg:absolute lg:mx-0 lg:mt-0 ${isReady ? "w-[92%] sm:w-[66%] lg:left-[654px] lg:right-auto lg:top-[calc(50%+27px)] lg:w-[555px] lg:-translate-y-1/2" : "w-[108%] sm:w-[80%] lg:left-[634px] lg:right-auto lg:top-[calc(50%+36px)] lg:w-[505px] lg:-translate-y-1/2"}`} />
         </div>
       </section>
     );
