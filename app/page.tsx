@@ -236,12 +236,12 @@ export default function Home() {
             <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-b from-black/[0.01] to-black/[0.04] backdrop-blur-[1px]" />
             <div className="pointer-events-none absolute inset-0 z-30 rounded-[20px] border-[5px] border-solid border-[#f3f3f3]" />
             <div className="relative z-10 mx-auto flex w-full max-w-[842px] flex-col items-center">
-              <AssetIcon src={assets.heroX} className="absolute left-[-26px] top-[38.5px] hidden h-[60px] w-[60px] rotate-[-4.6deg] rounded-[18px] lg:flex" iconClassName="h-[28px] w-[28px]" />
-              <AssetIcon src={assets.heroGmail} className="absolute left-[-52px] top-[145px] hidden h-[60px] w-[60px] rotate-[-4.6deg] rounded-[18px] lg:flex" iconClassName="h-[27.5px] w-[27.5px]" />
-              <AssetIcon src={assets.heroMedium} className="absolute left-[18px] top-[215px] hidden h-[68.8px] w-[68.8px] rotate-[-13.85deg] rounded-[16px] lg:flex" iconClassName="h-[31.5px] w-[31.5px]" />
-              <AssetIcon src={assets.heroYoutube} className="absolute right-[43px] top-[1px] hidden h-[68.8px] w-[68.8px] rotate-[13.85deg] rounded-[16px] lg:flex" iconClassName="h-[31.5px] w-[31.5px]" />
-              <AssetIcon src={assets.heroLinkedin} className="absolute right-[-38px] top-[110px] hidden h-[60px] w-[60px] rotate-[4.6deg] rounded-[18px] lg:flex" iconClassName="h-[28px] w-[28px]" />
-              <AssetIcon src={assets.heroReddit} className="absolute right-[-1px] top-[204px] hidden h-[64.6px] w-[64.6px] rotate-[9.21deg] rounded-[16px] lg:flex" iconClassName="h-[30.6px] w-[30.6px]" />
+              <AssetIcon src={assets.heroX} className="absolute top-[38.5px] hidden h-[60px] w-[60px] rotate-[-4.6deg] rounded-[18px] lg:left-[-58px] lg:flex xl:left-[-26px]" iconClassName="h-[28px] w-[28px]" />
+              <AssetIcon src={assets.heroGmail} className="absolute top-[145px] hidden h-[60px] w-[60px] rotate-[-4.6deg] rounded-[18px] lg:left-[-92px] lg:flex xl:left-[-52px]" iconClassName="h-[27.5px] w-[27.5px]" />
+              <AssetIcon src={assets.heroMedium} className="absolute top-[215px] hidden h-[68.8px] w-[68.8px] rotate-[-13.85deg] rounded-[16px] lg:left-[-72px] lg:flex xl:left-[18px]" iconClassName="h-[31.5px] w-[31.5px]" />
+              <AssetIcon src={assets.heroYoutube} className="absolute top-[1px] hidden h-[68.8px] w-[68.8px] rotate-[13.85deg] rounded-[16px] lg:right-[8px] lg:flex xl:right-[43px]" iconClassName="h-[31.5px] w-[31.5px]" />
+              <AssetIcon src={assets.heroLinkedin} className="absolute top-[110px] hidden h-[60px] w-[60px] rotate-[4.6deg] rounded-[18px] lg:right-[-82px] lg:flex xl:right-[-38px]" iconClassName="h-[28px] w-[28px]" />
+              <AssetIcon src={assets.heroReddit} className="absolute top-[204px] hidden h-[64.6px] w-[64.6px] rotate-[9.21deg] rounded-[16px] lg:right-[-72px] lg:flex xl:right-[-1px]" iconClassName="h-[30.6px] w-[30.6px]" />
 
               <div className="mb-7 flex max-w-full items-center gap-3 rounded-full border border-black/10 bg-black/[0.04] py-[5px] pl-[5px] pr-[17px]">
                 <span className="flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-sm shadow-[0_2px_2px_rgba(0,0,0,0.05)]">
@@ -286,7 +286,7 @@ export default function Home() {
 
         <section className="w-full max-w-[1138px] py-[60px]">
           <h2 className="max-w-[848px] text-[34px] font-semibold leading-[1.18] tracking-[-0.7px] text-black/60 sm:text-[42px] lg:text-[48px] lg:leading-[70.4px] lg:tracking-[-1px]">
-            Most AI rewrites your personality out. <span className="text-ink"><span className="relative inline-block"><span className="relative z-10">Polyscribe</span><svg className="absolute -bottom-1 left-0 z-0 h-3 w-full overflow-visible lg:-bottom-0.5" viewBox="0 0 260 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C72 3 170 2 256 10" fill="none" stroke="#ffbd2e" strokeWidth="6" strokeLinecap="round" /></svg></span> keeps what makes your writing yours.</span>
+            Most AI rewrites your personality out. <span className="text-ink"><span className="relative inline-block"><span className="relative z-10">Polyscribe</span><svg className="absolute -bottom-1 left-0 z-0 h-3 w-full origin-left rotate-[-2deg] overflow-visible lg:-bottom-0.5 lg:left-0.5" viewBox="0 0 260 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C72 3 170 2 256 10" fill="none" stroke="#ffbd2e" strokeWidth="6" strokeLinecap="round" /></svg></span> keeps what makes your writing yours.</span>
           </h2>
           <div className="mt-9 grid gap-10 lg:grid-cols-[496px_496px] lg:gap-[86px]">
             <CompareCard title="Generic AI" text="Polished, but no longer personal. Generic AI replaces your natural phrasing, flattens your rhythm, and leaves you editing the rewrite again." image={assets.genericAi} />

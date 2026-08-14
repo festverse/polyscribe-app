@@ -69,7 +69,7 @@ select {
 }
 
 .turn-gradient {
-  background: linear-gradient(123deg, #0d0d0d 38%, #ffffff 50%, #0d0d0d 62%);
+  background: linear-gradient(123deg, #6f6f6f 0%, #9d9d9d 18%, #ffffff 32%, #b8b8b8 43%, #0d0d0d 62%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
