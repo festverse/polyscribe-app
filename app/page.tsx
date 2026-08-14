@@ -270,15 +270,15 @@ export default function Home() {
                 </div>
                 <div className="relative h-[318px] overflow-hidden rounded-[16px] bg-white px-5 py-4 shadow-[0_8px_12px_rgba(0,0,0,0.15)]">
                   <textarea maxLength={3000} className="h-full w-full resize-none border-0 bg-transparent pb-24 text-base text-[#777] outline-none placeholder:text-[rgba(0,0,0,0.5)]" placeholder="Paste something you want to rewrite" />
-                  <div className="absolute inset-x-5 bottom-4 flex items-center gap-4 max-sm:flex-col max-sm:items-stretch">
-                    <button className="inline-flex h-[38px] shrink-0 items-center gap-1.5 rounded-[8px] border border-[#eaeaea] bg-[#f5f5f5] px-[15px] text-sm font-normal text-[#444]">
+                  <div className="absolute inset-x-4 bottom-4 flex items-center gap-4 sm:inset-x-5 max-sm:flex-col max-sm:items-stretch max-sm:gap-3">
+                    <button className="inline-flex h-[38px] shrink-0 items-center justify-center gap-1.5 rounded-[8px] border border-[#eaeaea] bg-[#f5f5f5] px-[15px] text-sm font-normal text-[#444] max-sm:w-full">
                       <img src={assets.heroPencil} alt="" className="h-[14px] w-[14px]" />
                       <span>Select Preset</span>
                       <img src={assets.heroChevron} alt="" className="h-[14px] w-[14px]" />
                     </button>
-                    <div className="ml-auto flex items-center gap-4 max-sm:ml-0 max-sm:justify-between">
+                    <div className="ml-auto flex min-w-0 items-center gap-4 max-sm:ml-0 max-sm:w-full max-sm:justify-between max-sm:gap-3">
                       <span className="whitespace-nowrap text-xs font-normal text-[#888]">0/3,000</span>
-                      <button className="inline-flex h-[44px] shrink-0 items-center gap-1.5 rounded-full bg-[#e5e5e5] px-5 text-base font-medium text-[#a3a3a3]" disabled>
+                      <button className="inline-flex h-[44px] min-w-0 shrink items-center justify-center gap-1.5 rounded-full bg-[#e5e5e5] px-5 text-base font-medium text-[#a3a3a3] max-sm:flex-1 max-sm:px-4 max-sm:text-sm" disabled>
                         Rewrite now for free
                         <img src={assets.heroArrowRight} alt="" className="h-[14px] w-[14px]" />
                       </button>
