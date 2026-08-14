@@ -141,15 +141,16 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const lenis = new Lenis({
-      duration: 1.35,
+      duration: reduceMotion ? 0 : 1.15,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 0.8,
+      smoothWheel: !reduceMotion,
+      wheelMultiplier: 0.78,
       touchMultiplier: 1.0,
       anchors: {
         offset: -92,
-        duration: 1.55,
+        duration: reduceMotion ? 0 : 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
       }
     });
@@ -160,9 +161,25 @@ export default function Home() {
       frame = requestAnimationFrame(raf);
     };
 
+    const revealElements = Array.from(document.querySelectorAll<HTMLElement>("main section, main footer"));
+    revealElements.forEach((element) => element.classList.add("reveal-section"));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -12%", threshold: 0.12 }
+    );
+    revealElements.forEach((element) => observer.observe(element));
+
     frame = requestAnimationFrame(raf);
     return () => {
       cancelAnimationFrame(frame);
+      observer.disconnect();
       lenis.destroy();
     };
   }, []);
@@ -338,7 +355,7 @@ export default function Home() {
             <Button className="h-[53px] w-fit rounded-[8px] bg-[#ffc458] px-8 py-4 text-base font-medium text-ink shadow-[0_10px_10px_rgba(253,188,69,0.2)] hover:bg-[#ffc458]">Start writing now</Button>
           </div>
 
-          <div className="grid w-full grid-cols-2 gap-5 md:grid-cols-3 lg:hidden">
+          <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:hidden">
             {presets.map((preset) => (
               <PresetCard key={preset.name} preset={preset} />
             ))}
@@ -413,7 +430,7 @@ export default function Home() {
           <div className="relative overflow-hidden rounded-[40px] border-[10px] border-solid border-[#f3f3f3] bg-soft">
             <div className="relative mb-[-0.75px] w-full px-6 pb-16 pt-20 sm:px-10 lg:px-[120px]">
               <div className="footer-columns grid w-full gap-8">
-                <div className="w-[300px] pb-[41.6px]">
+                <div className="w-full max-w-[300px] pb-[41.6px]">
                   <div className="flex flex-col gap-3">
                     <img src={assets.logoLarge} alt="" className="h-[69px] w-[69px]" />
                     <p className="max-w-[300px] text-2xl font-medium leading-[31.2px] tracking-[-0.5px] text-ink">Polyscribe is your independent AI writing assistant.</p>
@@ -426,12 +443,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="relative w-full pb-16 text-center text-[64px] font-semibold leading-[0.9] tracking-[-2px] text-ink sm:text-[130px] lg:text-[201.6px] lg:leading-[181.44px] lg:tracking-[-8.064px]">
+            <div className="relative w-full pb-16 text-center text-[clamp(44px,18vw,64px)] font-semibold leading-[0.9] tracking-[-2px] text-ink sm:text-[130px] lg:text-[201.6px] lg:leading-[181.44px] lg:tracking-[-8.064px]">
               <span className="relative inline-block">
                 Polyscribe
-                <svg className="pointer-events-none absolute left-[1%] top-[70%] h-[16px] w-[98%] rotate-[-2.5deg] overflow-visible sm:h-[22px] lg:h-[30px]" viewBox="0 0 1000 42" preserveAspectRatio="none" aria-hidden="true">
-                  <path d="M18 29 C250 8 710 6 982 18" fill="none" stroke="#ffbd2e" strokeWidth="20" strokeLinecap="round" />
-                </svg>
               </span>
             </div>
           </div>
@@ -489,7 +503,7 @@ function FeatureCard({ title, text, image, large = false, imageClassName }: { ti
         <h3 className="text-xl font-semibold leading-7 text-ink">{title}</h3>
         <p className="text-base leading-[22px] text-[#555]">{text}</p>
       </div>
-      <div className={`pointer-events-none absolute ${imageClassName}`}>
+      <div className={`pointer-events-none absolute max-sm:origin-top-left max-sm:scale-[0.72] ${imageClassName}`}>
         <img src={image} alt="" className="h-full w-full object-contain" />
       </div>
     </article>
@@ -526,7 +540,7 @@ function DarkCta({ overline, title, text, image, featuredImage = false }: { over
             </p>
             <Button className="h-[53px] w-fit rounded-[8px] bg-[#ffc458] px-8 py-4 text-base font-medium text-ink shadow-[0_10px_10px_rgba(253,188,69,0.2)] hover:bg-[#ffc458]">Start writing now</Button>
           </div>
-          <img src={image} alt="" className={`pointer-events-none absolute bottom-0 h-auto max-w-none object-contain ${isReady ? "right-[-1px] w-[78%] sm:w-[58%] lg:left-[654px] lg:right-auto lg:top-[calc(50%+27px)] lg:w-[555px] lg:-translate-y-1/2" : "right-[-1px] w-[78%] sm:w-[62%] lg:left-[634px] lg:right-auto lg:top-[calc(50%+36px)] lg:w-[505px] lg:-translate-y-1/2"}`} />
+          <img src={image} alt="" className={`pointer-events-none relative bottom-auto right-auto mx-auto mt-8 h-auto max-w-none object-contain lg:absolute lg:mx-0 lg:mt-0 ${isReady ? "w-[92%] sm:w-[66%] lg:left-[654px] lg:right-auto lg:top-[calc(50%+27px)] lg:w-[555px] lg:-translate-y-1/2" : "w-[92%] sm:w-[70%] lg:left-[634px] lg:right-auto lg:top-[calc(50%+36px)] lg:w-[505px] lg:-translate-y-1/2"}`} />
         </div>
       </section>
     );
