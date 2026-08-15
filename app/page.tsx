@@ -361,7 +361,7 @@ export default function Home() {
             <Button className="h-[53px] w-fit rounded-[8px] bg-[#ffc458] px-8 py-4 text-base font-medium text-ink shadow-[0_10px_10px_rgba(253,188,69,0.2)] hover:bg-[#ffc458]">Start writing now</Button>
           </div>
 
-          <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:hidden">
+          <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:grid-cols-3 lg:hidden">
             {presets.map((preset) => (
               <PresetCard key={preset.name} preset={preset} />
             ))}
@@ -484,12 +484,12 @@ function TestimonialCard({ avatar, name, handle, text, date }: { avatar: string;
 function PresetCard({ preset, desktop = false, style }: { preset: { name: string; desc: string }; desktop?: boolean; style?: React.CSSProperties }) {
   return (
     <article
-      className={`${desktop ? "absolute" : "min-h-[220px]"} rounded-[3.563px] bg-[#f4d03f] px-4 py-6 text-ink shadow-[0_8.908px_13.363px_-2.673px_rgba(0,0,0,0.1),0_3.563px_5.345px_-1.782px_rgba(0,0,0,0.05)]`}
+      className={`${desktop ? "absolute" : "min-h-[148px] sm:min-h-[180px]"} rounded-[3.563px] bg-[#f4d03f] px-5 py-6 text-ink shadow-[0_8.908px_13.363px_-2.673px_rgba(0,0,0,0.1),0_3.563px_5.345px_-1.782px_rgba(0,0,0,0.05)] sm:px-4`}
       style={style}
     >
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-semibold leading-[21.95px] tracking-[-0.445px]">{preset.name}</h3>
-        <p className="max-w-[188px] text-sm leading-[20.044px]">{preset.desc}</p>
+        <p className="max-w-[260px] text-sm leading-[20.044px] sm:max-w-[188px]">{preset.desc}</p>
       </div>
     </article>
   );
